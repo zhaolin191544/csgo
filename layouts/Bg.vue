@@ -1,5 +1,9 @@
 <template>
-  <div ref="hyperspeedContainer" class="hyperspeed-container" />
+  <div class="slidev-layout">
+    <div ref="hyperspeedContainer" class="hyperspeed-container" />
+
+    <slot />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -1283,16 +1287,26 @@ watch(
 </script>
 
 <style scoped>
+.slidev-layout {
+  /* 创建一个定位上下文，这样内部的绝对定位元素才会相对于它 */
+  position: relative;
+  /* 确保内容不会被动画影响，通常 Slidev 默认有处理 */
+  z-index: 1;
+}
+
 .hyperspeed-container {
   width: 100%;
   height: 100%;
-  position: relative;
+  position: absolute;
   overflow: hidden;
+  z-index:-1;
 }
 
 .hyperspeed-container :deep(canvas) {
   width: 100% !important;
   height: 100% !important;
   display: block;
+  z-index:-1;
 }
+
 </style>
