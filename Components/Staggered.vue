@@ -778,7 +778,7 @@ onBeforeUnmount(() => {
   position: relative;
   color: #000;
   font-weight: 600;
-  font-size: 4rem;
+  font-size: 3rem;
   cursor: pointer;
   line-height: 1;
   letter-spacing: -2px;
@@ -792,7 +792,7 @@ onBeforeUnmount(() => {
 }
 
 .sm-scope .sm-panel-itemLabel {
-  display: inline-block;
+  display: block;
   will-change: transform;
   transform-origin: 50% 100%;
 }
@@ -810,7 +810,7 @@ onBeforeUnmount(() => {
   content: counter(smItem, decimal-leading-zero);
   position: absolute;
   top: 0.1em;
-  right: 3.2em;
+  right: 2.1rem;
   font-size: 18px;
   font-weight: 400;
   color: var(--sm-accent, #ff0000);
