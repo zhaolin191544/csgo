@@ -1,4 +1,30 @@
 <template>
+   <TextType 
+  :text="['Map++: Towards User-Participatory', 'Visual Simultaneous Localization and Mapping', 'Systems with Efficient Map Expansion and Sharing']"
+  :typingSpeed="40"
+  :pauseDuration="1500"
+  :deletingSpeed="20"
+  :showCursor="true"
+  cursorCharacter="|"
+  class="my-typewriter"
+/>
+
+ <div style="height: 100vh; position: absolute">
+   <StaggeredMenu
+      position="left"
+     :items="menuItems"
+     :display-socials="false"
+     :display-item-numbering="true"
+     menu-button-color="#fff"
+     open-menu-button-color="#000"
+     :change-menu-color-on-open="true"
+     :colors="['#9EF2B2', '#27FF64']"
+     accent-color="#27FF64"
+     @menu-open="handleMenuOpen"
+     @menu-close="handleMenuClose"
+   />
+ </div>
+
   <div class="slidev-layout">
     <div ref="hyperspeedContainer" class="hyperspeed-container" />
 
@@ -10,6 +36,8 @@
 import { onMounted, onUnmounted, watch, useTemplateRef } from 'vue';
 import * as THREE from 'three';
 import { BloomEffect, EffectComposer, EffectPass, RenderPass, SMAAEffect, SMAAPreset } from 'postprocessing';
+import TextType from "../Components/TextType.vue";
+import StaggeredMenu from '../Components/Staggered.vue';
 
 interface Distortion {
   uniforms: Record<string, { value: unknown }>;
@@ -61,6 +89,23 @@ interface HyperspeedOptions {
   colors: Colors;
   isHyper?: boolean;
 }
+
+const menuItems = [
+ { label: '引言', ariaLabel: 'Go to home page', link: '/' },
+ { label: 'SLAM', ariaLabel: 'Learn about us', link: '/about' },
+ { label: '实现过程', ariaLabel: 'View our services', link: '/services' },
+ { label: '总结与思考', ariaLabel: 'Get in touch', link: '/contact' }
+]
+
+const socialItems = [
+ { label: 'Twitter', link: 'https://twitter.com' },
+ { label: 'GitHub', link: 'https://github.com' },
+ { label: 'LinkedIn', link: 'https://linkedin.com' }
+]
+
+const handleMenuOpen = () => console.log('Menu opened')
+const handleMenuClose = () => console.log('Menu closed')
+
 
 interface HyperspeedProps {
   effectOptions?: Partial<HyperspeedOptions>;
@@ -1292,6 +1337,8 @@ watch(
   position: relative;
   /* 确保内容不会被动画影响，通常 Slidev 默认有处理 */
   z-index: 1;
+  padding-left: 0;
+  margin-top: -40px;
 }
 
 .hyperspeed-container {
@@ -1307,6 +1354,18 @@ watch(
   height: 100% !important;
   display: block;
   z-index:-1;
+}
+
+.my-typewriter {
+  font-family: 'Courier New', Courier, monospace; /* 使用等宽字体更有打字机效果 */
+  font-size: 1.8rem; /* 字体变大 */
+  color: #42b883;   /* 字体颜色改为 Vue 绿色 */
+  font-weight: 600; /* semi-bold */
+  text-align: center; /* 居中 */
+  padding: 20px;
+  position: absolute;
+  top:100px;
+  left: 100px;
 }
 
 </style>

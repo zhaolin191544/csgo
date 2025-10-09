@@ -1,11 +1,13 @@
 <template>
-  <div v-if="currentPage !== 2" ref="containerRef" :class="['w-full h-full relative pointer-events-none z-[3] overflow-hidden', className]" />
+  <div v-if="!hidden" :key="currentPage" ref="containerRef" :class="['w-full h-full relative pointer-events-none z-[3] overflow-hidden', className]" />
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, watch, useTemplateRef, computed, nextTick } from 'vue';
 import { Renderer, Program, Triangle, Mesh } from 'ogl';
 import { useNav } from '@slidev/client'
+
+const hidden = computed(() => currentPage.value === 2);
 
 const { currentPage } = useNav()
 export type RaysOrigin =
@@ -135,6 +137,64 @@ const debouncedUpdatePlacement = (() => {
     }, 16);
   };
 })();
+
+function cleanup () {
+  // 停掉 RAF、解绑事件、loseContext、清空容器等（你的原代码）
+  cleanupFunctionRef.value?.()
+  cleanupFunctionRef.value = null
+  rendererRef.value = null
+  uniformsRef.value = null
+  meshRef.value = null
+}
+
+
+/* ================== 关键修复点 #1：监听 hidden ================== */
+watch(hidden, async (h) => {
+  if (h) {
+    // 进入第 2 页：销毁
+    cleanup()
+  } else {
+    // 离开第 2 页：重建
+    await nextTick()
+    await initializeWebGL()
+    // 重新观察新容器（防止 IO 仍指向旧节点）
+    if (observerRef.value && containerRef.value) {
+      observerRef.value.observe(containerRef.value)
+    }
+  }
+})
+
+/* ================== 关键修复点 #2：监听 containerRef 变化 ================== */
+watch(containerRef, async (el, prev) => {
+  // 新的 DOM 挂上了：重新 observe
+  if (prev && observerRef.value) observerRef.value.unobserve(prev)
+  if (el && observerRef.value) observerRef.value.observe(el)
+
+  // v-if 新建了容器且当前不隐藏 → 立刻初始化
+  if (el && !hidden.value) {
+    await nextTick()
+    await initializeWebGL()
+  }
+})
+
+/* ================== 关键修复点 #3：IntersectionObserver 只建一次 ================== */
+onMounted(() => {
+  observerRef.value = new IntersectionObserver((entries) => {
+    isVisible.value = !!entries[0]?.isIntersecting
+  }, { threshold: 0.1, rootMargin: '50px' })
+
+  // 如果此时容器已存在，开始观察
+  if (containerRef.value) observerRef.value.observe(containerRef.value)
+
+  // 首次渲染且不是第 2 页 → 初始化
+  if (!hidden.value) initializeWebGL()
+})
+
+onUnmounted(() => {
+  observerRef.value?.disconnect()
+  observerRef.value = null
+  cleanup()
+})
 
 const vertexShader: string = `
 attribute vec2 position;
