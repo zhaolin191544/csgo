@@ -82,16 +82,22 @@
               :key="item.label + idx"
               class="relative overflow-hidden leading-none sm-panel-itemWrap"
             >
-              <a
-                class="inline-block relative pr-[1.4em] font-semibold text-[2rem] text-black no-underline uppercase leading-none tracking-[-2px] transition-[background,color] duration-150 ease-linear cursor-pointer sm-panel-item"
-                :href="item.link"
-                :aria-label="item.ariaLabel"
-                :data-index="idx + 1"
-              >
-                <span class="inline-block will-change-transform sm-panel-itemLabel [transform-origin:50%_100%]">
-                  {{ item.label }}
-                </span>
-              </a>
+              <div class="flex items-baseline">
+                <a
+                  class="inline-block relative pr-[1.4em] font-semibold text-[2rem] text-black no-underline uppercase leading-none tracking-[-2px] transition-[background,color] duration-150 ease-linear cursor-pointer sm-panel-item"
+                  :href="item.link"
+                  :aria-label="item.ariaLabel"
+                  :data-index="idx + 1"
+                >
+                  <span class="inline-block will-change-transform sm-panel-itemLabel qaq [transform-origin:50%_100%]">
+                    {{ item.label }}
+                  </span>
+
+                  <span class="inline-block will-change-transform sm-panel-itemLabel sm-panel-itemLabel1 [transform-origin:50%_100%]">
+                    jsw
+                  </span>
+                </a>
+              </div>
             </li>
             <li v-else class="relative overflow-hidden leading-none sm-panel-itemWrap" aria-hidden="true">
               <span
@@ -620,7 +626,6 @@ onBeforeUnmount(() => {
 .sm-scope .sm-panel-itemWrap {
   position: relative;
   overflow: hidden;
-  line-height: 1;
 }
 
 .sm-scope .sm-icon-line {
@@ -792,9 +797,17 @@ onBeforeUnmount(() => {
 }
 
 .sm-scope .sm-panel-itemLabel {
-  display: block;
+  display: inline-block;
   will-change: transform;
   transform-origin: 50% 100%;
+}
+
+.sm-scope .sm-panel-itemLabel1 {
+  display: inline-block;
+  will-change: transform;
+  transform-origin: 50% 100%;
+  margin-left: 35px;
+  font-size: 20px;
 }
 
 .sm-scope .sm-panel-item:hover {
@@ -805,12 +818,12 @@ onBeforeUnmount(() => {
   counter-reset: smItem;
 }
 
-.sm-scope .sm-panel-list[data-numbering] .sm-panel-item::after {
+.sm-scope .sm-panel-list[data-numbering] .sm-panel-item .qaq::after {
   counter-increment: smItem;
   content: counter(smItem, decimal-leading-zero);
   position: absolute;
   top: 0.1em;
-  right: 2.1rem;
+  right: -2rem;
   font-size: 18px;
   font-weight: 400;
   color: var(--sm-accent, #ff0000);

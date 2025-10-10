@@ -94,7 +94,7 @@ const menuItems = [
  { label: '引言', ariaLabel: 'Go to home page', link: '/' },
  { label: 'SLAM', ariaLabel: 'Learn about us', link: '/about' },
  { label: '实现过程', ariaLabel: 'View our services', link: '/services' },
- { label: '总结与思考', ariaLabel: 'Get in touch', link: '/contact' }
+ { label: '总结思考', ariaLabel: 'Get in touch', link: '/contact' }
 ]
 
 const socialItems = [
