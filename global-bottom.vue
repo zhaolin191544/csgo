@@ -7,7 +7,7 @@ import { ref, onMounted, onUnmounted, watch, useTemplateRef, computed, nextTick 
 import { Renderer, Program, Triangle, Mesh } from 'ogl';
 import { useNav } from '@slidev/client'
 
-const hidden = computed(() => currentPage.value === 2);
+const hidden = computed(() => [2].includes(currentPage.value));
 
 const { currentPage } = useNav()
 export type RaysOrigin =
@@ -139,7 +139,7 @@ const debouncedUpdatePlacement = (() => {
 })();
 
 function cleanup () {
-  // Í£µô RAF¡¢½â°óÊÂ¼þ¡¢loseContext¡¢Çå¿ÕÈÝÆ÷µÈ£¨ÄãµÄÔ­´úÂë£©
+  // Í£ï¿½ï¿½ RAFï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½loseContextï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ï¿½ï¿½Ô­ï¿½ï¿½ï¿½ë£©
   cleanupFunctionRef.value?.()
   cleanupFunctionRef.value = null
   rendererRef.value = null
@@ -148,45 +148,45 @@ function cleanup () {
 }
 
 
-/* ================== ¹Ø¼üÐÞ¸´µã #1£º¼àÌý hidden ================== */
+/* ================== ï¿½Ø¼ï¿½ï¿½Þ¸ï¿½ï¿½ï¿½ #1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ hidden ================== */
 watch(hidden, async (h) => {
   if (h) {
-    // ½øÈëµÚ 2 Ò³£ºÏú»Ù
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ 2 Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     cleanup()
   } else {
-    // Àë¿ªµÚ 2 Ò³£ºÖØ½¨
+    // ï¿½ë¿ªï¿½ï¿½ 2 Ò³ï¿½ï¿½ï¿½Ø½ï¿½
     await nextTick()
     await initializeWebGL()
-    // ÖØÐÂ¹Û²ìÐÂÈÝÆ÷£¨·ÀÖ¹ IO ÈÔÖ¸Ïò¾É½Úµã£©
+    // ï¿½ï¿½ï¿½Â¹Û²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹ IO ï¿½ï¿½Ö¸ï¿½ï¿½É½Úµã£©
     if (observerRef.value && containerRef.value) {
       observerRef.value.observe(containerRef.value)
     }
   }
 })
 
-/* ================== ¹Ø¼üÐÞ¸´µã #2£º¼àÌý containerRef ±ä»¯ ================== */
+/* ================== ï¿½Ø¼ï¿½ï¿½Þ¸ï¿½ï¿½ï¿½ #2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ containerRef ï¿½ä»¯ ================== */
 watch(containerRef, async (el, prev) => {
-  // ÐÂµÄ DOM ¹ÒÉÏÁË£ºÖØÐÂ observe
+  // ï¿½Âµï¿½ DOM ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½ï¿½ï¿½ï¿½ï¿½ observe
   if (prev && observerRef.value) observerRef.value.unobserve(prev)
   if (el && observerRef.value) observerRef.value.observe(el)
 
-  // v-if ÐÂ½¨ÁËÈÝÆ÷ÇÒµ±Ç°²»Òþ²Ø ¡ú Á¢¿Ì³õÊ¼»¯
+  // v-if ï¿½Â½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ì³ï¿½Ê¼ï¿½ï¿½
   if (el && !hidden.value) {
     await nextTick()
     await initializeWebGL()
   }
 })
 
-/* ================== ¹Ø¼üÐÞ¸´µã #3£ºIntersectionObserver Ö»½¨Ò»´Î ================== */
+/* ================== ï¿½Ø¼ï¿½ï¿½Þ¸ï¿½ï¿½ï¿½ #3ï¿½ï¿½IntersectionObserver Ö»ï¿½ï¿½Ò»ï¿½ï¿½ ================== */
 onMounted(() => {
   observerRef.value = new IntersectionObserver((entries) => {
     isVisible.value = !!entries[0]?.isIntersecting
   }, { threshold: 0.1, rootMargin: '50px' })
 
-  // Èç¹û´ËÊ±ÈÝÆ÷ÒÑ´æÔÚ£¬¿ªÊ¼¹Û²ì
+  // ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½ï¿½Ú£ï¿½ï¿½ï¿½Ê¼ï¿½Û²ï¿½
   if (containerRef.value) observerRef.value.observe(containerRef.value)
 
-  // Ê×´ÎäÖÈ¾ÇÒ²»ÊÇµÚ 2 Ò³ ¡ú ³õÊ¼»¯
+  // ï¿½×´ï¿½ï¿½ï¿½È¾ï¿½Ò²ï¿½ï¿½Çµï¿½ 2 Ò³ ï¿½ï¿½ ï¿½ï¿½Ê¼ï¿½ï¿½
   if (!hidden.value) initializeWebGL()
 })
 
