@@ -91,7 +91,7 @@ interface HyperspeedOptions {
 }
 
 const menuItems = [
- { label: '引言', ariaLabel: 'Go to home page', link: '/' },
+ { label: '背景和动机', ariaLabel: 'Go to home page', link: '/',name:"赵麟" },
  { label: 'SLAM', ariaLabel: 'Learn about us', link: '/about' },
  { label: '实现过程', ariaLabel: 'View our services', link: '/services' },
  { label: '总结思考', ariaLabel: 'Get in touch', link: '/contact' }

@@ -7,7 +7,7 @@ import { ref, onMounted, onUnmounted, watch, useTemplateRef, computed, nextTick 
 import { Renderer, Program, Triangle, Mesh } from 'ogl';
 import { useNav } from '@slidev/client'
 
-const hidden = computed(() => [2].includes(currentPage.value));
+const hidden = computed(() => [2,25].includes(currentPage.value));
 
 const { currentPage } = useNav()
 export type RaysOrigin =
