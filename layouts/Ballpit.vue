@@ -26,7 +26,37 @@ import {
   type WebGLRendererParameters
 } from 'three';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
-import { defineProps, onMounted, onUnmounted, useTemplateRef, ref } from 'vue';
+import { defineProps, onMounted, onUnmounted, useTemplateRef, ref, watch } from 'vue';
+
+import { useNav, useSlideContext } from '@slidev/client'
+const { currentPage } = useNav()
+
+const { $slidev } = useSlideContext()
+
+// 假设出问题的页面是第 5 和第 7 页
+const PROBLEMATIC_SLIDES = [25];
+
+const REFRESHED_PAGES_KEY = 'slidev_refreshed_pages_log';
+
+watch(currentPage, (newPage) => {
+  if (typeof sessionStorage === 'undefined') return; // 在SSR或特殊环境下跳过
+
+  // 1. 读取已经刷新过的页面列表，如果不存在则为空数组
+  const refreshedPages = JSON.parse(sessionStorage.getItem(REFRESHED_PAGES_KEY) || '[]');
+
+  // 2. 检查当前页是否是问题页，并且是否“尚未”被刷新过
+  const isProblemPage = PROBLEMATIC_SLIDES.includes(newPage);
+  const needsRefresh = isProblemPage && !refreshedPages.includes(newPage);
+
+  if (needsRefresh) {
+    // 3. 将当前页添加到已刷新列表，并存回sessionStorage
+    const updatedRefreshedPages = [...refreshedPages, newPage];
+    sessionStorage.setItem(REFRESHED_PAGES_KEY, JSON.stringify(updatedRefreshedPages));
+
+    // 4. 执行刷新
+    window.location.reload();
+  }
+}, { immediate: true });
 
 gsap.registerPlugin(Observer);
 
