@@ -26,7 +26,8 @@ import {
   type WebGLRendererParameters
 } from 'three';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
-import { defineProps, onMounted, onUnmounted, useTemplateRef, ref } from 'vue';
+import { defineProps, onMounted, onUnmounted, useTemplateRef, ref, watch, nextTick } from 'vue';
+import { useSlideContext } from '@slidev/client';
 
 gsap.registerPlugin(Observer);
 
@@ -88,6 +89,17 @@ const props = withDefaults(defineProps<Props>(), {
 
 const canvasRef = useTemplateRef<HTMLCanvasElement>('canvasRef');
 const spheresInstanceRef = ref<CreateBallpitReturn | null>(null);
+
+const { $slidev } = useSlideContext();
+
+watch(
+  () => $slidev.nav.currentPage,
+  () => {
+    nextTick(() => {
+      spheresInstanceRef.value?.three.resize();
+    });
+  }
+);
 
 interface PostProcessing {
   setSize: (width: number, height: number) => void;

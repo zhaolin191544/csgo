@@ -91,10 +91,11 @@ interface HyperspeedOptions {
 }
 
 const menuItems = [
- { label: '背景和动机', ariaLabel: 'Go to home page', link: '/',name:"赵麟" },
- { label: 'SLAM', ariaLabel: 'Learn about us', link: '/about' },
- { label: '实现过程', ariaLabel: 'View our services', link: '/services' },
- { label: '总结思考', ariaLabel: 'Get in touch', link: '/contact' }
+ { label: '研究背景', ariaLabel: 'Go to home page', link: '/',name:"郭青松" },
+ { label: 'SLAM', ariaLabel: 'Learn about us', link: '/about',name:"郭青松" },
+ { label: 'Map++', ariaLabel: 'View our services', link: '/services',name:"赵麟"},
+ { label: '结果评价', ariaLabel: 'Get in touch', link: '/contact',name: "蒋俊毅"},
+ { label: '总结感悟', ariaLabel: 'Get in touch', link: '/contact',name: "蒋俊毅"},
 ]
 
 const socialItems = [

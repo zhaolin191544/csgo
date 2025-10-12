@@ -94,7 +94,7 @@
                   </span>
 
                   <span class="inline-block will-change-transform sm-panel-itemLabel sm-panel-itemLabel1 [transform-origin:50%_100%]">
-                    jsw
+                    {{ item.name }}
                   </span>
                 </a>
               </div>
@@ -138,11 +138,13 @@
 <script setup lang="ts">
 import { gsap } from 'gsap';
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, useTemplateRef, watch } from 'vue';
+import { useSlideContext } from '@slidev/client';
 
 export interface StaggeredMenuItem {
   label: string;
   ariaLabel: string;
   link: string;
+  name: string;
 }
 export interface StaggeredMenuSocialItem {
   label: string;
@@ -178,6 +180,23 @@ const props = withDefaults(defineProps<StaggeredMenuProps>(), {
   changeMenuColorOnOpen: true,
   accentColor: '#27FF64'
 });
+
+const { $slidev } = useSlideContext();
+
+watch(
+  () => $slidev.nav.currentPage,
+  () => {
+    nextTick(() => {
+      if (open.value) {
+        toggleMenu();
+      }
+      if (gsapContext) {
+        gsapContext.revert();
+      }
+      initializeGSAP();
+    });
+  }
+);
 
 const open = ref(false);
 const openRef = ref(false);
