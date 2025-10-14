@@ -94,7 +94,7 @@ const menuItems = [
  { label: '研究背景', ariaLabel: 'Go to home page', link: '/',name:"郭青松" },
  { label: 'SLAM', ariaLabel: 'Learn about us', link: '/about',name:"郭青松" },
  { label: 'Map++', ariaLabel: 'View our services', link: '/services',name:"赵麟"},
- { label: '结果评价', ariaLabel: 'Get in touch', link: '/contact',name: "蒋俊毅"},
+ { label: '结果评估', ariaLabel: 'Get in touch', link: '/contact',name: "蒋俊毅"},
  { label: '总结感悟', ariaLabel: 'Get in touch', link: '/contact',name: "蒋俊毅"},
 ]
 
