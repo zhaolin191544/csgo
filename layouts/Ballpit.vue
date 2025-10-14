@@ -34,7 +34,7 @@ const { currentPage } = useNav()
 const { $slidev } = useSlideContext()
 
 // 假设出问题的页面是第 5 和第 7 页
-const PROBLEMATIC_SLIDES = [26];
+const PROBLEMATIC_SLIDES = [27];
 
 const REFRESHED_PAGES_KEY = 'slidev_refreshed_pages_log';
 
