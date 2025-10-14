@@ -302,6 +302,13 @@ graph LR
 
 </v-click>
 
+<!--
+Map++ 的设计旨在实现高效且用户友好的视觉SLAM，核心目标包括：
+高可扩展性 (High scalability): 系统应能在给定的网络、计算和存储资源下，支持大量用户参与建图 。
+最小化冗余 (Minimal redundancy): 在保证地图精度和覆盖范围的同时，系统需要消除冗余地图数据的传输 。这有助于高效利用有限的计算、网络、存储和移动设备资源 。
+持续更新 (Continuous updates): 为保持地图的时效性，Map++ 应支持长时间的地图更新 。
+-->
+
 ---
 
 ## Map++ 核心设计逻辑
@@ -726,4 +733,3 @@ Note right of Device: 跳过本地优化
 ---
 layout: Ballpit
 ---
-
