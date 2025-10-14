@@ -117,41 +117,7 @@ Map++ Towards User-Participator…。尽管精度高，但在大规模环境（�
 <v-click>
 <div style="display:inline-block;width:1000px; height:1100px;margin-left:-50px; margin-top:100px;">
 
-```mermaid
-%%{init: {"theme": "base", "themeVariables": {
-  "primaryColor": "#ffcccc",
-  "primaryTextColor": "#660000",
-  "primaryBorderColor": "#990000",
-
-  "lineColor": "#0066cc",
-  "secondaryColor": "#ccffcc",
-  "tertiaryColor": "#ccccff",
-
-  "fontSize": "20px",
-  "fontFamily": "Arial",
-  "background": "#f5f5f5"
-}}}%%
-flowchart LR
-        subgraph UserDevice[用户设备（端侧）]
-            A[图像 / IMU 数据] --> B[跟踪流水线]
-            B --> C{关键帧判定?}
-            C -- 否 --> B2[仅跟踪更新 位姿]
-            C -- 是 --> D[关键帧 + 局部地图更新]
-            D --> E1[局部优化（Local BA）]
-            E1 --> LMAP[本地地图 Local Map]
-        end
-
-        subgraph EdgeServer[边缘/云服务器]
-            GMAP[全局地图 Global Map] --> GOPT[全局优化 / 回环]
-            GOPT --> GMAP
-            MERGE[地图合并] --> GOPT
-        end
-
-        %% 数据路径
-        LMAP -- 上传关键帧/地图点/描述子 --> MERGE
-
-        
-```
+<img src="/2.png" style="width:700px; height:350px; border-radius:10px; margin-top:-60px; margin-left:90px">
 
 </div>
 </v-click>
@@ -172,13 +138,31 @@ flowchart LR
 
 <v-click>
 
-<div style="width:600px;height:600px">
+
+```mermaid
+flowchart LR
+        subgraph TITLE[用户设备 端侧]
+        end
+        A[图像 / IMU 数据] --> B[跟踪流水线]
+        B --> C{关键帧判定?}
+        C -- 否 --> B2[仅跟踪更新 位姿]
+        C -- 是 --> D[关键帧 + 局部地图更新]
+        D --> E1[局部优化（Local BA）]
+        E1 --> LMAP[本地地图 Local Map]
+```
+
+</v-click>
+
+
+<v-click>
+
+<div style="width:550px;height:550px;margin-left:0px;margin-top:30px;">
 
 ```mermaid
 %%{init: {"theme": "base", "themeVariables": {
-  "primaryColor": "#307ff5ff",
-  "primaryTextColor": "#b7fd15ff",
-  "primaryBorderColor": "#0a7406ff",
+  "primaryColor": "#ffcccc",
+  "primaryTextColor": "#660000",
+  "primaryBorderColor": "#990000",
 
   "lineColor": "#0066cc",
   "secondaryColor": "#ccffcc",
@@ -188,6 +172,35 @@ flowchart LR
   "fontFamily": "Arial",
   "background": "#f5f5f5"
 }}}%%
+flowchart LR
+    subgraph TITLE[边缘/云服务器]
+    end
+    GOPT --> GMAP
+    MERGE[地图合并] --> GOPT
+    GMAP[全局地图 Global Map] --> GOPT[全局优化 / 回环]  
+    
+```
+
+
+</div>
+
+</v-click>
+
+
+<v-click>
+
+<span style="color:white;position:absolute;left:560px;top:380px">上传关键帧/地图点/描述子</span>
+
+</v-click>
+
+
+---
+
+<v-click>
+
+<div style="width:900px;height:900px">
+
+```mermaid
 sequenceDiagram
     participant Cam as 摄像头/IMU
     participant Feat as 特征提取
@@ -283,10 +296,6 @@ graph LR
     A[用户设备<br>生成新关键帧] --> B{基于元数据的重叠评估};
     B -- 重叠度低 --> C[全局地图扩展仅上传新鲜数据];
     B -- 重叠度高 --> D[全局地图共享下载并复用现有地图];
-
-    style A fill:#f9f,stroke:#333
-    style C fill:#9f9,stroke:#333
-    style D fill:#99f,stroke:#333
 ```
 
 </div>
@@ -397,19 +406,6 @@ sequenceDiagram
 <div style="width:600px;height:400px">
 
 ```mermaid
-%%{init: {"theme": "base", "themeVariables": {
-  "primaryColor": "#ffcccc",
-  "primaryTextColor": "#660000",
-  "primaryBorderColor": "#990000",
-
-  "lineColor": "#0066cc",
-  "secondaryColor": "#ccffcc",
-  "tertiaryColor": "#ccccff",
-
-  "fontSize": "15px",
-  "fontFamily": "Arial",
-  "background": "#f5f5f5"
-}}}%%
 graph TD
    A[服务器响应告知采样点中哪些是冗余或新鲜的] --> B{设备端进行冗余控制};
     subgraph B
@@ -428,10 +424,14 @@ graph TD
 
 **触发条件**：重叠度高于阈值，表明用户正行驶在“已知道路”上。
 
+<v-click>
+
 ### 变“贡献者”为“受益者”
 
 * **核心优势**：设备无需再执行耗时的局部优化（在NVIDIA Xavier平台上平均耗时 **400ms** ）。取而代之的是，直接从服务器下载并使用更精确的全局地图进行轻量级定位。
 * **主动式地图共享 (Proactive Map Sharing)**：为减少频繁的网络请求，服务器会“预见性”地发送一个比当前所需范围稍大的地图片段（由超参数 `α` 控制）。实验证明 `α=1.3` 能将地图请求次数从3次减少到2次。
+
+</v-click>
 
 ---
 
@@ -665,6 +665,8 @@ Note right of Device: 跳过本地优化
 
 <div style="margin-top:-6px">
 
+<v-click>
+
 ## 💡 系统优点与不足
 ### 优点
 - 有效减少冗余数据传输与计算；
@@ -672,10 +674,16 @@ Note right of Device: 跳过本地优化
 - 无需修改核心SLAM算法即可兼容；
 - 适合大规模用户协同环境。
 
+</v-click>
+
+<v-click>
+
 ### 不足
 - 对光照与视觉特征依赖较强；
 - 移动端仍存在一定计算负担；
 - 地图更新机制依赖服务器判定。
+
+</v-click>
 
 </div>
 

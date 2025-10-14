@@ -26,7 +26,7 @@ import {
   type WebGLRendererParameters
 } from 'three';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
-import { defineProps, onMounted, onUnmounted, useTemplateRef, ref, watch } from 'vue';
+import { defineProps, onMounted, onUnmounted, useTemplateRef, ref, WatchStopHandle, nextTick, watch } from 'vue';
 
 import { useNav, useSlideContext } from '@slidev/client'
 const { currentPage } = useNav()
@@ -34,7 +34,7 @@ const { currentPage } = useNav()
 const { $slidev } = useSlideContext()
 
 // 假设出问题的页面是第 5 和第 7 页
-const PROBLEMATIC_SLIDES = [25];
+const PROBLEMATIC_SLIDES = [26];
 
 const REFRESHED_PAGES_KEY = 'slidev_refreshed_pages_log';
 
@@ -119,7 +119,6 @@ const props = withDefaults(defineProps<Props>(), {
 const canvasRef = useTemplateRef<HTMLCanvasElement>('canvasRef');
 const spheresInstanceRef = ref<CreateBallpitReturn | null>(null);
 
-const { $slidev } = useSlideContext();
 
 watch(
   () => $slidev.nav.currentPage,
