@@ -1,11 +1,16 @@
 <template>
   <div v-if="!hidden" :key="currentPage" ref="containerRef" :class="['w-full h-full relative pointer-events-none z-[3] overflow-hidden', className]" />
+  <div class="global-top">
+    <Timer />
+  </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, watch, useTemplateRef, computed, nextTick } from 'vue';
 import { Renderer, Program, Triangle, Mesh } from 'ogl';
 import { useNav } from '@slidev/client'
+import  Timer  from './Components/Timer.vue'
+
 
 const hidden = computed(() => [1,2,27].includes(currentPage.value));
 
@@ -151,13 +156,13 @@ function cleanup () {
 /* ================== �ؼ��޸��� #1������ hidden ================== */
 watch(hidden, async (h) => {
   if (h) {
-    // ����� 2 ҳ������
+    // �����? 2 ҳ������
     cleanup()
   } else {
     // �뿪�� 2 ҳ���ؽ�
     await nextTick()
     await initializeWebGL()
-    // ���¹۲�����������ֹ IO ��ָ��ɽڵ㣩
+    // ���¹۲�����������ֹ IO ��ָ��ɽڵ�?
     if (observerRef.value && containerRef.value) {
       observerRef.value.observe(containerRef.value)
     }
@@ -183,7 +188,7 @@ onMounted(() => {
     isVisible.value = !!entries[0]?.isIntersecting
   }, { threshold: 0.1, rootMargin: '50px' })
 
-  // �����ʱ�����Ѵ��ڣ���ʼ�۲�
+  // �����ʱ�����Ѵ��ڣ���ʼ�۲�?
   if (containerRef.value) observerRef.value.observe(containerRef.value)
 
   // �״���Ⱦ�Ҳ��ǵ� 2 ҳ �� ��ʼ��
