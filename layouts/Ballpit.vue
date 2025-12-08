@@ -48,14 +48,6 @@ watch(currentPage, (newPage) => {
   const isProblemPage = PROBLEMATIC_SLIDES.includes(newPage);
   const needsRefresh = isProblemPage && !refreshedPages.includes(newPage);
 
-  if (needsRefresh) {
-    // 3. 将当前页添加到已刷新列表，并存回sessionStorage
-    const updatedRefreshedPages = [...refreshedPages, newPage];
-    sessionStorage.setItem(REFRESHED_PAGES_KEY, JSON.stringify(updatedRefreshedPages));
-
-    // 4. 执行刷新
-    window.location.reload();
-  }
 }, { immediate: true });
 
 gsap.registerPlugin(Observer);
@@ -948,6 +940,7 @@ onUnmounted(() => {
   <div class="fixed inset-0 flex flex-col items-center pointer-events-none z-10">
     <div font-serif text-center text-6xl mt-22>Q&A</div>
     <div font-serif text-center text-5xl mt-12>Thank You</div>
+    <div font-serif text-center text-1xl mt-2>(slides made by an awesome guy named zhaolin)</div>
   </div>
   <canvas ref="canvasRef" :class="['w-full', 'h-full', props.className]"/>
 </template>

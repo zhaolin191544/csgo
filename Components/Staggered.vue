@@ -211,7 +211,7 @@ const iconRef = useTemplateRef('iconRef');
 
 const textInnerRef = useTemplateRef('textInnerRef');
 const textWrapRef = useTemplateRef('textWrapRef');
-const textLines = ref<string[]>(['Menu', 'Close']);
+const textLines = ref<string[]>(['目录', 'Close']);
 
 const openTlRef = ref<gsap.core.Timeline | null>(null);
 const closeTweenRef = ref<gsap.core.Tween | null>(null);
@@ -593,7 +593,7 @@ onBeforeUnmount(() => {
   border: none;
   cursor: pointer;
   color: #e9e9ef;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1;
   overflow: visible;
 }
@@ -802,7 +802,7 @@ onBeforeUnmount(() => {
   position: relative;
   color: #000;
   font-weight: 600;
-  font-size: 3rem;
+  font-size: 2.3rem;
   cursor: pointer;
   line-height: 1;
   letter-spacing: -2px;

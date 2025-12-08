@@ -1,6 +1,6 @@
 <template>
    <TextType 
-  :text="['Map++: Towards User-Participatory', 'Visual Simultaneous Localization and Mapping', 'Systems with Efficient Map Expansion and Sharing']"
+  :text="['GPSoil: Towards low-cost soil moisture',  'sensing using GNSS signals']"
   :typingSpeed="40"
   :pauseDuration="1500"
   :deletingSpeed="20"
@@ -26,7 +26,6 @@
  </div>
 
   <div class="slidev-layout">
-    <div ref="hyperspeedContainer" class="hyperspeed-container" />
 
     <slot />
   </div>
@@ -91,11 +90,14 @@ interface HyperspeedOptions {
 }
 
 const menuItems = [
- { label: '研究背景', ariaLabel: 'Go to home page', link: '/',name:"郭青松" },
- { label: 'SLAM', ariaLabel: 'Learn about us', link: '/about',name:"郭青松" },
- { label: 'Map++', ariaLabel: 'View our services', link: '/services',name:"赵麟"},
- { label: '结果评估', ariaLabel: 'Get in touch', link: '/contact',name: "蒋俊毅"},
- { label: '总结感悟', ariaLabel: 'Get in touch', link: '/contact',name: "蒋俊毅"},
+ { label: '背景&动机', ariaLabel: 'Go to home page', link: '/',name:"蒋俊毅" },
+ { label: '现有方案', ariaLabel: 'Learn about us', link: '/about',name:"蒋俊毅" },
+ { label: 'GPSoil核心', ariaLabel: 'View our services', link: '/services',name:"赵麟"},
+ { label: '系统概览', ariaLabel: 'Get in touch', link: '/contact',name: "赵麟"},
+ { label: '关键设计', ariaLabel: 'Get in touch', link: '/contact',name: "赵麟"},
+ { label: '实现与成本', ariaLabel: 'Get in touch', link: '/contact',name: "郭青松"},
+ { label: '实验评估', ariaLabel: 'Get in touch', link: '/contact',name: "郭青松"},
+ { label: '讨论与总结', ariaLabel: 'Get in touch', link: '/contact',name: "郭青松"},
 ]
 
 const socialItems = [

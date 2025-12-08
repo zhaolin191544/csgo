@@ -12,7 +12,7 @@ import { useNav } from '@slidev/client'
 import  Timer  from './Components/Timer.vue'
 
 
-const hidden = computed(() => [1,2,27].includes(currentPage.value));
+const hidden = computed(() => [88].includes(currentPage.value));
 
 const { currentPage } = useNav()
 export type RaysOrigin =
