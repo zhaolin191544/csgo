@@ -320,7 +320,7 @@ flowchart LR
 
 在实验室环境中，在多个土壤含水水平下评估整体精度，并与两种商用土壤水分传感器对比；
 
-随后考察不同土壤类型、天气、施肥条件等对感知性能的影响，并进行消融实验分析各设计组件的贡献。
+随后考察不同土壤类型、天气、施肥条件等对感知性能的影响。
 
 在真实农田实验中，在不同地理位置、不同作物类型、不同埋深和不同植被覆盖条件下评估系统性能，以验证实际可行性。
 
@@ -332,11 +332,20 @@ flowchart LR
 
 <img src="/14.png" style="position:absolute; width:500px; height:300px; top:250px; left:400px; border-radius:10px;">
 
+<!--
+我将对本次实验进行评估，首先实验是在实验室环境中以及实际农田环境中评估系统的性能。
+
+首先是在实验室环境中，需要评估多土壤的整体精度并与两种商用的传感器进行对比。还要考察不同的土壤，天气，施肥条件等对感知性能的影响。
+而在实际环境下，需要评估地理位置，不同作物，埋的深度以及不同植被的覆盖这些条件下的系统性能，以验证实际可行性。
+
+这张图就是实验场景与布局，左侧是设备，有GPSoil System，以及传感接收器 等等，右边是部署的环境。
+-->
+
 ---
 
 ## 实验室测试
 
-- 整体精度：平均绝对误差（MAE）5.2%，满足多数作物灌溉需求（灌溉阈值通常 > 15%）
+- 整体精度：平均绝对误差（MAE）5.2%，满足多数作物灌溉需求
 - 对比优势：
   - 低成本传感器（$6）：误差～10%，30% 湿度以上饱和失效
 
@@ -344,31 +353,86 @@ flowchart LR
 
   - 高端传感器（$115）：精度略高但成本是 GPSoil 的 77倍
 
+<!--
+在实验室测试的结果中，GPSoil 的平均估计误差约为 5.2%，价格与低成本的传感器相近，但是比它误差少10%，而高度传感器虽然比GPSoil的精度高一点，但是价格却贵了77倍。
+
+随着土壤含水率升高，额外衰减使得测量误差略有下降。
+
+GPSoil 的标准差为 2.21%，略高于高端传感器的 1.14%，但显著低于低端传感器。
+
+当土壤含水率超过 30% 时，低端传感器出现饱和失效，始终输出几乎不变但错误的结果，因此看上去方差偏小。
+
+总体而言，GPSoil 的土壤水分感知精度对于大多数灌溉管理场景是足够的
+-->
+
 ---
 
-### 实验室测试
 
-环境适应性：
+<div style="position:absolute;left:40px;top:5px;">
 
-- 土壤类型（普通土 / 石质土 / 盆栽土）：误差 3%-5% (figure1)
-- 施肥影响（尿素 / 磷酸二氢钾）：误差 2%-4%，抗干扰性强（figure2）
-- 天气条件（晴 / 阴 / 雨）：晴天表现最佳，雨天误差略有波动（figure3）
+## 实验室测试(环境适应性)
 
-<img src="/16.png" style="position:absolute; width:300px; height:180px; top:50px; left:640px; border-radius:10px;">
-<img src="/17.png" style="position:absolute; width:430px; height:240px; top:270px; left:40px; border-radius:10px;">
-<img src="/18.png" style="position:absolute; width:400px; height:240px; top:270px; left:500px; border-radius:10px;">
-
-<div style="position:absolute;left:750px;top:240px;width:600px;height:200px;">
- figure1
 </div>
 
-<div style="position:absolute;left:220px;top:520px;width:600px;height:200px;">
-figure2
+<div style="position:absolute;left:82px;top:50px;">
+土壤类型(普通土/石质土/盆栽土)(figure1)
+</div>
+<div style="position:absolute;left:555px;top:50px;">
+实验影响(尿素/磷酸二氢钾)(figure2)
+</div>
+<div style="position:absolute;left:130px;top:300px;">
+天气条件(晴/阴/雨)(figure3)
+</div>
+<div style="position:absolute;left:535px;top:300px;">
+冠层影响：50-150cm 植被高度(figure4)
 </div>
 
-<div style="position:absolute;left:690px;top:520px;width:600px;height:200px;">
-figure3
+<img src="/16.png" style="position:absolute; width:400px; height:190px; top:80px; left:40px; border-radius:10px;">
+<img src="/17.png" style="position:absolute; width:400px; height:190px; top:80px; left:490px; border-radius:10px;">
+<img src="/18.png" style="position:absolute; width:400px; height:190px; top:330px; left:40px; border-radius:10px;">
+<img src="/22.png" style="position:absolute; width:400px; height:190px; top:330px; left:490px; border-radius:10px;">
+
+<div style="position:absolute;left:150px;top:275px;">
+(figure1 误差3%-5%)
 </div>
+<div style="position:absolute;left:554px;top:275px;">
+(figure2 误差 2%-4%，抗干扰性强)
+</div>
+<div style="position:absolute;left:100px;top:525px;">
+(figure3 晴天最佳，雨天略有波动)
+</div>
+<div style="position:absolute;left:535px;top:525px;">
+(figure4 误差 4.0%-5.7%，抗遮挡性强)
+</div>
+
+<!--
+可以看图1，我们可以发现普通土的平均误差中约为 3%，在石质土中约为 5%，盆栽土中波动最大。可以看出系统在三种土壤中的整体表现稳定。
+
+农业生产中广泛通过施肥提高产量，但肥料成分也可能影响土壤水分感知精度。
+为评估这一影响，我们使用了两种常见肥料：尿素(图2a)和磷酸二氢钾(图2b)。
+在不同施肥量下，GPSoil 的估计误差基本保持在 2–4% 范围内，显示出对养分变化的良好鲁棒性。
+
+我们在晴天、多云和雨天条件下评估系统性能。
+
+如图3所示，多云天气下平均误差比晴天增加约 0.8%，雨天误差方差显著提高。
+
+推测这与雨滴引起的复杂衍射和散射有关。
+
+总体来看，晴天性能最佳；
+
+这是因为差分方法无法完全消除大气误差，如云层动态变化产生的干扰。
+
+但在当前设计中，两个天线并非真正同时测量，因此大气条件随时间变化可能仍会影响结果。
+
+我们在多种植被覆盖条件下评估系统性能，包括绿萝、肯氏椰子和竹
+类等，高度范围 50–150 cm，代表日常环境中常见的高度区间。
+
+每种高度下进行 5 组实验。
+
+如图4所示，植被覆盖对精度的影响较小：平均误差从无覆盖的 4.0% 增至最高 5.7%。
+
+得益于双天线设计，对包括植被在内的传播误差均有所抑制，从而保证整体误差在可接受范围内。
+-->
 
 ---
 
@@ -378,23 +442,19 @@ figure3
 
 </div>
 
-<div style="position:absolute;left:50px;top:50px;">
+<div style="position:absolute;left:65px;top:50px;">
 多地点适配：砂质土/壤质土4个区域(figure1)
 </div>
-<div style="position:absolute;left:500px;top:50px;">
+<div style="position:absolute;left:520px;top:50px;">
 作物适配：豌豆田/卷心菜田/休耕地(figure2)
 </div>
-<div style="position:absolute;left:50px;top:300px;">
+<div style="position:absolute;left:320px;top:310px;">
 深度能力：0-100cm 深度(figure3)
-</div>
-<div style="position:absolute;left:500px;top:300px;">
-冠层影响：50-150cm 植被高度(figure4)
 </div>
 
 <img src="/19.png" style="position:absolute; width:400px; height:190px; top:80px; left:40px; border-radius:10px;">
 <img src="/20.png" style="position:absolute; width:400px; height:190px; top:80px; left:490px; border-radius:10px;">
-<img src="/21.png" style="position:absolute; width:400px; height:190px; top:330px; left:40px; border-radius:10px;">
-<img src="/22.png" style="position:absolute; width:400px; height:190px; top:330px; left:490px; border-radius:10px;">
+<img src="/21.png" style="position:absolute; width:400px; height:190px; top:340px; left:260px; border-radius:10px;">
 
 <div style="position:absolute;left:150px;top:275px;">
 (figure1 平均误差 3.3%)
@@ -402,22 +462,35 @@ figure3
 <div style="position:absolute;left:600px;top:275px;">
 (figure2 整体误差 4.1%)
 </div>
-<div style="position:absolute;left:70px;top:525px;">
-(figure3 平均误差 2.9%，最深支持 1 米探测)
+<div style="position:absolute;left:670px;top:390px;">
+(figure3)
 </div>
-<div style="position:absolute;left:550px;top:525px;">
-(figure4 误差 4.0%-5.7%，抗遮挡性强)
+<div style="position:absolute;left:670px;top:430px;">
+平均误差 2.9%，最深支持 1 米探测
 </div>
 
 
+<!--
+GNSS 系统具有广泛覆盖能力，在大多数开阔环境中都可以接收信号，因此基于 GNSS 的 GPSoil 适合农业应用.
 
+首先来看图1有关多地点适配，在图中有两个为砂质土，两个为壤土，系统在四个地点的平均误差为3.3%，真实满足农业实践需求，且地点间差异很小，说明系统对位置相关环境因素不敏感。
 
-<!-- 不同植被覆盖影响
-我们在多种植被覆盖条件下评估系统性能，包括绿萝、肯氏椰子（Howea forsteriana）和竹
-类等，高度范围 50–150 cm，代表日常环境中常见的高度区间。
-每种高度下进行 5 组实验。
-如图 19 所示，植被覆盖对精度的影响较小：平均误差从无覆盖的 4.0% 增至最高 5.7%。
-得益于双天线设计，对包括植被在内的传播误差均有所抑制，从而保证整体误差在可接受范围内。 -->
+再看图2，在种植野豌豆的农田、卷心菜农田和休耕地中都测试了 GPSoil。
+可以看到总体平均误差略微增加至 4.1%。
+其中，在种植野豌豆的农田中，均值误差相较裸土增加约 0.7%，且波动更大，我
+们认为这与风吹动植株造成的信号扰动有关。
+相较之下，油菜由于植株刚性大、叶片较疏，对精度影响很小。
+
+然后看图3，将GPSoil 分别部署于多个不同深度，并评估其在不同埋深处的感知精度。
+
+得益于地下 GNSS 中继设计，系统在大深度下仍然能保持较好性能。
+
+实验结果表明，平均误差约为 2.9%，最差情况下误差为 9.8%，最佳情况下仅 0.5%。
+
+虽然在某些深度（如 40 cm）偶尔会出现局部性能波动，但这些异常往往与地下石块、土壤性质突变等环境因素相关。
+
+整体来看，GPSoil 在各深度都表现出稳定且足以用于实践的精度。
+-->
 
 ---
 
@@ -425,7 +498,7 @@ figure3
 
 <br>
 
-<div v-click.hide>
+<div v-click>
 
 ### 1. 传统土壤湿度传感器
 
@@ -443,21 +516,30 @@ figure3
 
 | 方案     | 核心问题                        | GPSoil 优势                    |
 | -------- | ------------------------------- | ------------------------------ |
-| RFID     | 探测范围窄、精度低              | 全球覆盖、1 米深度探测         |
+| RFID     | 探测范围窄、精度低              | 大范围覆盖         |
 | WiFi     | 覆盖范围小（<10 米）、需部署 AP | 无需额外基础设施，天然覆盖农田 |
 | LoRa/LTE | 需部署发射器、成本高            | 利用 GNSS 卫星，无额外部署成本 |
 
 </div>
  
-<div v-click style="margin-top:-400px;">
 
-### 3. GPSoil 核心差异化
+<!--
+石膏块和张力计通过电阻测量土壤张力，但其性能衰减快，需要频繁更换；
 
-- 频谱专属：无通信干扰
-- 计算高效：GNSS 芯片内置信号处理能力
-- 覆盖广泛：单卫星覆盖地球 1/8 区域，95% 地区至少 4 颗卫星覆盖
+电容式传感器通过介电常数测水，但价格昂贵且在高盐土壤中误差较大。
 
-</div>
+GPSoil 通过测量 GNSS 信号的 RF 传播速度来估计土壤介电常数，从而实
+现低成本且耐用的土壤水分感知。同时它也不会受到土壤盐分的直接影响，也避免了石膏块、张力计类设备的物理老化问题。
+
+已有研究利用多种无线技术进行土壤含水率感知的方案中有这几种，RFID,WIFI,LoRa,LTE等，但存在这些问题...
+
+GNSS 信号天然适合大范围农业应用
+大覆盖范围：单颗 GPS 卫星可覆盖地球约 1/8 的面积，而单个 LoRa 发射端的覆盖范围约 100 m， 单个 LTE 基站约 1000 m。
+
+频谱干扰小：GNSS 使用专用频段，避免了对其他通信系统的干扰。
+
+ 计算开销低：GNSS 芯片内部已实现码相等信号处理，外部无需复杂的信号处理，大幅减轻边缘计算负担。
+-->
 
 ---
 
@@ -483,22 +565,27 @@ figure3
 ### 2. 拓展应用场景
 
 - 核心：基于信号传播速度测量的泛化能力
-- 潜在方向：水污染检测、森林火灾预警、气体泄漏探测
+- 潜在方向：水污染检测、森林火灾与气体泄漏检测
 
 </v-click>
 
-<br>
+<!--
+虽然原型系统已经能够较好地测量土壤水分，但在大规模实际部署前仍有若干值得改进的方面：
 
-<v-click>
+1.当前 5.2% 的精度已满足大多数精准灌溉系统需求，但仍可通过数据驱动优化方法进一步提升；
 
-### 3. 技术扩展可行性
+2.目前原型通过电缆供电，可以使用纽扣电池供电，便于便携部署；或者使用光伏供电因为系统仅需毫瓦级功率。
 
-- 适配其他无线信号（LoRa/LTE）：
-  - 挑战：信号非连续传输，需复杂检测逻辑
-  - 优势：GNSS 信号连续传输，中继设计更简单
+3.硬件成本还可进一步压缩，例如去除开发阶段使用的连接器与调试接口；GNSS 天线可通过热压工艺 制作，并使用 3D 打印支架保证 RHCP 极化；电源电路也可进行协同设计以减少稳压器数量；
 
+4.在通信方面，目前通过有线连接将数据采集至笔记本；在精准农业中，地下常有灌溉管道，可沿管道布设数据线，减少对农机作业的影响；
 
-</v-click>
+5.为缩小硬件尺寸，可将电路进一步集成在多层可堆叠小板上，便于安装和维护。
+
+GPSoil 能精确测量信号传播速度，因此具有更广泛的应用前景。如水体污染检测
+
+GNSS 信号传播速度对环境扰动敏感。如森林火灾与气体泄漏检测。
+-->
 
 ---
 
@@ -534,10 +621,26 @@ figure3
 
 ### 3. 应用意义
 
-- 推动精准农业发展，降低 40% 灌溉水资源浪费
-- 为可持续农业提供可规模化、低成本的数据采集工具
+- 为基于无线信号的精准农业土壤监测提供了一条可扩展、有效的路径
+- 为数据驱动农业发展奠定基础
 
 </v-click>
+
+<!--
+GPSoil，一种利用普适 GNSS 信号的低成本土壤水分感知系统，克服了现有方案在成本、耐用性和基础设施依赖方面的局限。
+
+通过利用 GNSS 卫星的全球覆盖能力，GPSoil 无需专用发射端。
+
+本系统的关键创新包括：
+
+基于单颗 GNSS 接收机的天线切换差分距离测量技术；
+
+用于增强地下信号的低成本中继；
+
+一种将“时钟漂移误差”转化为提升分辨率工具的方法。
+
+GPSoil为基于无线信号的精准农业土壤监测提供了一条可扩展、有效的路径，为数据驱动农业发展奠定基础
+-->
 
 ---
 layout: Ballpit
