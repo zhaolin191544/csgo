@@ -10,7 +10,7 @@ favicon: '/avator.jpg'
 layout: Bg
 ---
 
-<div class="font-serif text-center text-4xl mt-18">
+<div class="font-serif text-center text-4xl mt-10">
     基于 Web 的 IFC 建筑信息模型<br>智能协作平台的设计与实现
 </div>
 
@@ -286,7 +286,9 @@ graph TB
 
 <v-click>
 
-```mermaid {scale: 0.55}
+<div class="fixed bottom-(-2) left-70">
+
+```mermaid {scale: 0.75}
 erDiagram
     User ||--o{ Project : creates
     User ||--o{ ModelComment : writes
@@ -315,6 +317,8 @@ erDiagram
     }
 ```
 
+</div>
+
 </v-click>
 
 <!--
@@ -328,7 +332,9 @@ Model的metadata字段以JSON存放解析后的构件计数等信息，ModelComm
 
 <v-click>
 
-```mermaid {scale: 0.55}
+<div class="fixed bottom-(-2) left-80">
+
+```mermaid {scale: 0.60}
 flowchart TD
     A["开始加载"] --> B["从服务器获取 IFC 文件"]
     B --> C["初始化 web-ifc WASM"]
@@ -342,11 +348,19 @@ flowchart TD
     I --> J["添加到场景并对焦"]
 ```
 
+</div>
+
 </v-click>
 
 <v-click>
 
-> **流式接口是性能关键** — 避免一次性将所有几何体载入内存，中型模型 ~4.2 秒完成加载
+<div class="w-1/2">
+
+> **流式接口是性能关键** — 避免一次性将所有几何体载入内存，
+<br>中型模型 ~4.2 秒完成加载
+
+
+</div>
 
 </v-click>
 
@@ -526,9 +540,11 @@ IfcWall.fireRating exists
 
 ## 5. 实时多人协作 — 架构
 
+<div class="fixed left-60">
+
 <v-click>
 
-```mermaid {scale: 0.55}
+```mermaid {scale: 0.8}
 graph TB
     subgraph "用户A"
         A1["Viewer"] --> A2["useCollaboration"]
@@ -550,6 +566,8 @@ graph TB
 ```
 
 </v-click>
+
+</div>
 
 ---
 
@@ -886,15 +904,10 @@ graph TB
 
 </v-clicks>
 
+
 ---
-
-<div class="font-serif text-center text-5xl mt-24">
-    感谢各位老师的聆听
-</div>
-
-<div class="text-center text-2xl mt-12 text-gray-300">
-    请批评指正
-</div>
+layout: Ballpit
+---
 
 <!--
 谢谢各位老师，我的汇报到此结束，请老师们批评指正。
