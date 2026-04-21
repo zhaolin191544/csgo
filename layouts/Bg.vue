@@ -1,6 +1,6 @@
 <template>
-   <TextType 
-  :text="['Map++: Towards User-Participatory', 'Visual Simultaneous Localization and Mapping', 'Systems with Efficient Map Expansion and Sharing']"
+   <TextType
+  :text="['基于 Web 的 IFC 建筑信息模型', '智能协作平台的设计与实现', 'Web-based IFC BIM Intelligent Collaboration Platform']"
   :typingSpeed="40"
   :pauseDuration="1500"
   :deletingSpeed="20"
@@ -91,11 +91,11 @@ interface HyperspeedOptions {
 }
 
 const menuItems = [
- { label: '研究背景', ariaLabel: 'Go to home page', link: '/',name:"郭青松" },
- { label: 'SLAM', ariaLabel: 'Learn about us', link: '/about',name:"郭青松" },
- { label: 'Map++', ariaLabel: 'View our services', link: '/services',name:"赵麟"},
- { label: '结果评估', ariaLabel: 'Get in touch', link: '/contact',name: "蒋俊毅"},
- { label: '总结感悟', ariaLabel: 'Get in touch', link: '/contact',name: "蒋俊毅"},
+ { label: '研究背景', ariaLabel: '研究背景与意义', link: '/',name:"IFC BIM" },
+ { label: '系统设计', ariaLabel: '系统总体设计', link: '/about',name:"Architecture" },
+ { label: '核心模块', ariaLabel: '三维可视化 / AI / 协作', link: '/services',name:"Core Modules"},
+ { label: '测试评估', ariaLabel: '系统测试与性能评估', link: '/contact',name: "Evaluation"},
+ { label: '总结展望', ariaLabel: '总结与展望', link: '/contact',name: "Conclusion"},
 ]
 
 const socialItems = [
