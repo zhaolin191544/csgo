@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 340" width="880" height="340" font-family="'Noto Sans SC','PingFang SC','Microsoft YaHei','Helvetica Neue',Helvetica,Arial,sans-serif">
+<rect width="880" height="340" fill="none"/>
+<text x="0" y="22" fill="#9aa0a6" font-size="12.5">/data/dataset/bids · 招投标扫描件 · 数据集画像决定后面所有参数取值</text>
+<rect x="0" y="46" width="100" height="80" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.10)"/>
+<text x="50" y="88" fill="#27FF64" font-size="29" font-weight="800" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">104</text>
+<text x="50" y="110" fill="#9aa0a6" font-size="11.5" text-anchor="middle">张图片</text>
+<rect x="112" y="46" width="100" height="80" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.10)"/>
+<text x="162" y="88" fill="#38bdf8" font-size="29" font-weight="800" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">4</text>
+<text x="162" y="110" fill="#9aa0a6" font-size="11.5" text-anchor="middle">个目录</text>
+<rect x="224" y="46" width="100" height="80" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.10)"/>
+<text x="274" y="88" fill="#fbbf24" font-size="29" font-weight="800" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">2</text>
+<text x="274" y="110" fill="#9aa0a6" font-size="11.5" text-anchor="middle">种尺寸</text>
+<rect x="336" y="46" width="100" height="80" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.10)"/>
+<text x="386" y="88" fill="#94a3b8" font-size="24" font-weight="800" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">100%</text>
+<text x="386" y="110" fill="#9aa0a6" font-size="11.5" text-anchor="middle">RGB</text>
+<rect x="34.0" y="168.0" width="67.9" height="96.0" rx="3" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="1.5"/>
+<line x1="39.0" y1="175.0" x2="96.9" y2="175.0" stroke="#38bdf8" stroke-width="1" opacity="0.35"/>
+<line x1="39.0" y1="182.0" x2="96.9" y2="182.0" stroke="#38bdf8" stroke-width="1" opacity="0.35"/>
+<line x1="39.0" y1="189.0" x2="96.9" y2="189.0" stroke="#38bdf8" stroke-width="1" opacity="0.35"/>
+<line x1="39.0" y1="196.0" x2="96.9" y2="196.0" stroke="#38bdf8" stroke-width="1" opacity="0.35"/>
+<line x1="39.0" y1="203.0" x2="96.9" y2="203.0" stroke="#38bdf8" stroke-width="1" opacity="0.35"/>
+<line x1="39.0" y1="210.0" x2="96.9" y2="210.0" stroke="#38bdf8" stroke-width="1" opacity="0.35"/>
+<line x1="39.0" y1="217.0" x2="96.9" y2="217.0" stroke="#38bdf8" stroke-width="1" opacity="0.35"/>
+<line x1="39.0" y1="224.0" x2="96.9" y2="224.0" stroke="#38bdf8" stroke-width="1" opacity="0.35"/>
+<line x1="39.0" y1="231.0" x2="96.9" y2="231.0" stroke="#38bdf8" stroke-width="1" opacity="0.35"/>
+<line x1="39.0" y1="238.0" x2="96.9" y2="238.0" stroke="#38bdf8" stroke-width="1" opacity="0.35"/>
+<line x1="39.0" y1="245.0" x2="96.9" y2="245.0" stroke="#38bdf8" stroke-width="1" opacity="0.35"/>
+<line x1="39.0" y1="252.0" x2="96.9" y2="252.0" stroke="#38bdf8" stroke-width="1" opacity="0.35"/>
+<line x1="39.0" y1="259.0" x2="96.9" y2="259.0" stroke="#38bdf8" stroke-width="1" opacity="0.35"/>
+<text x="34.0" y="286" fill="#e8eaed" font-size="12" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">竖版 1449×2048</text>
+<rect x="244.0" y="196.1" width="96.0" height="67.9" rx="3" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="1.5"/>
+<line x1="249.0" y1="203.1" x2="335.0" y2="203.1" stroke="#38bdf8" stroke-width="1" opacity="0.35"/>
+<line x1="249.0" y1="210.1" x2="335.0" y2="210.1" stroke="#38bdf8" stroke-width="1" opacity="0.35"/>
+<line x1="249.0" y1="217.1" x2="335.0" y2="217.1" stroke="#38bdf8" stroke-width="1" opacity="0.35"/>
+<line x1="249.0" y1="224.1" x2="335.0" y2="224.1" stroke="#38bdf8" stroke-width="1" opacity="0.35"/>
+<line x1="249.0" y1="231.1" x2="335.0" y2="231.1" stroke="#38bdf8" stroke-width="1" opacity="0.35"/>
+<line x1="249.0" y1="238.1" x2="335.0" y2="238.1" stroke="#38bdf8" stroke-width="1" opacity="0.35"/>
+<line x1="249.0" y1="245.1" x2="335.0" y2="245.1" stroke="#38bdf8" stroke-width="1" opacity="0.35"/>
+<line x1="249.0" y1="252.1" x2="335.0" y2="252.1" stroke="#38bdf8" stroke-width="1" opacity="0.35"/>
+<line x1="249.0" y1="259.1" x2="335.0" y2="259.1" stroke="#38bdf8" stroke-width="1" opacity="0.35"/>
+<text x="244.0" y="286" fill="#e8eaed" font-size="12" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">横版 2048×1449</text>
+<text x="34" y="308" fill="#9aa0a6" font-size="11.5">A4 扫描件 ≈ 175 DPI · 招投标文档 → 密集文本长页</text>
+<rect x="470" y="46" width="410" height="80" rx="9" fill="rgba(39,255,100,0.07)" stroke="rgba(39,255,100,0.3)"/>
+<text x="486" y="72" fill="#27FF64" font-size="12.5" font-weight="700">4 个目录尺寸完全一致</text>
+<text x="486" y="92" fill="#9aa0a6" font-size="11.5">→ 不必分目录测，跑混合即可</text>
+<rect x="470" y="132" width="410" height="80" rx="9" fill="rgba(251,191,36,0.07)" stroke="rgba(251,191,36,0.3)"/>
+<text x="486" y="158" fill="#fbbf24" font-size="12.5" font-weight="700">关键变量不是分辨率，是每页文本行数</text>
+<text x="486" y="178" fill="#9aa0a6" font-size="11.5">det 检出多少框，rec 就跑多少次；rec 调用次数才是</text>
+<text x="486" y="195" fill="#9aa0a6" font-size="11.5">耗时主因</text>
+<rect x="470" y="218" width="410" height="80" rx="9" fill="rgba(248,113,113,0.07)" stroke="rgba(248,113,113,0.3)"/>
+<text x="486" y="244" fill="#f87171" font-size="12.5" font-weight="700">样本量 104 张偏少</text>
+<text x="486" y="264" fill="#9aa0a6" font-size="11.5">需 --loop 循环凑时长，引入 page cache 效</text>
+<text x="486" y="281" fill="#9aa0a6" font-size="11.5">应，报告须注明</text>
+</svg>

@@ -1,6 +1,6 @@
 <template>
    <TextType 
-  :text="['−24.5%  →  +116.1%', '90.3% 的增益来自一个参数', 'Kunpeng 920 · openGauss · TPC-C']"
+  :text="['本月两个项目', 'KAOT 模板适配性分析 · 已闭环', 'PaddleOCR 昇腾性能摸测 · 进行中']"
   :typingSpeed="40"
   :pauseDuration="1500"
   :deletingSpeed="20"
@@ -91,13 +91,13 @@ interface HyperspeedOptions {
 }
 
 const menuItems = [
- { label: '背景与难点', ariaLabel: 'KAOT 与本次工作的三个难点', link: '/', name: "01-02" },
- { label: '环境与方法', ariaLabel: '实验环境、配置分组与实验协议', link: '/', name: "03" },
- { label: '阶段一~二', ariaLabel: '全量套用与方法论修正', link: '/', name: "04-05" },
- { label: '阶段三~四', ariaLabel: '消融实验与并发扫描', link: '/', name: "06-07" },
- { label: '阶段五~六', ariaLabel: '单参数隔离与容量扫描', link: '/', name: "08-09" },
- { label: '结论与建议', ariaLabel: '主结论、推荐配置与工具改进建议', link: '/', name: "10" },
- { label: '局限与收获', ariaLabel: '已知局限、后续工作与方法论收获', link: '/', name: "11-13" },
+ { label: '工作概览', ariaLabel: '本月两个项目', link: '/', name: "00" },
+ { label: '项目一 · 背景与设计', ariaLabel: 'KAOT 背景、分组与实验协议', link: '/', name: "01-02" },
+ { label: '项目一 · 六个阶段', ariaLabel: '阶段一至阶段六的数据', link: '/', name: "03-10" },
+ { label: '项目一 · 结论与建议', ariaLabel: '主结论、推荐配置与工具建议', link: '/', name: "11-12" },
+ { label: '项目二 · 任务与画像', ariaLabel: 'PaddleOCR 任务拆解与数据集画像', link: '/', name: "13-15" },
+ { label: '项目二 · 方案设计', ariaLabel: '技术链路、摸测方法与算力切分', link: '/', name: "16-19" },
+ { label: '进展 · 迁移 · 总结', ariaLabel: '当前进展、方法迁移与本月总结', link: '/', name: "20-22" },
 ]
 
 const socialItems = [

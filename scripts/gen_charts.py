@@ -503,3 +503,173 @@ def fig9():
 for fn in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9):
     fn()
 print("done")
+
+
+# ================================================================
+# 项目二：PaddleOCR 昇腾平台性能摸测
+# ================================================================
+
+# ---------------------------------------------------------------- fig10
+def fig10():
+    """数据集画像"""
+    W, H = 880, 340
+    s = head(W, H, None, "/data/dataset/bids · 招投标扫描件 · 数据集画像决定后面所有参数取值")
+    tiles = [("104", "张图片", C_B), ("4", "个目录", C_C1), ("2", "种尺寸", C_E), ("100%", "RGB", C_A)]
+    for i, (v, lb, c) in enumerate(tiles):
+        x = 0 + i * 112
+        s.append(f'<rect x="{x}" y="46" width="100" height="80" rx="10" fill="rgba(255,255,255,0.04)" '
+                 f'stroke="rgba(255,255,255,0.10)"/>')
+        s.append(f'<text x="{x+50}" y="88" fill="{c}" font-size="{24 if len(v) > 3 else 29}" font-weight="800" '
+                 f'text-anchor="middle" font-family="{MONO}">{v}</text>')
+        s.append(f'<text x="{x+50}" y="110" fill="{MUTED}" font-size="11.5" text-anchor="middle">{lb}</text>')
+    # 两种尺寸按比例示意
+    bx, by = 34, 168
+    for i, (w, h, lb) in enumerate([(1449, 2048, "竖版 1449×2048"), (2048, 1449, "横版 2048×1449")]):
+        sc = 96 / 2048
+        rw, rh = w * sc, h * sc
+        x = bx + i * 210
+        s.append(f'<rect x="{x:.1f}" y="{by + (96-rh):.1f}" width="{rw:.1f}" height="{rh:.1f}" rx="3" '
+                 f'fill="rgba(56,189,248,0.12)" stroke="{C_C1}" stroke-width="1.5"/>')
+        # 密集文本行示意
+        for k in range(int(rh // 7)):
+            s.append(f'<line x1="{x+5:.1f}" y1="{by+(96-rh)+7+k*7:.1f}" x2="{x+rw-5:.1f}" '
+                     f'y2="{by+(96-rh)+7+k*7:.1f}" stroke="{C_C1}" stroke-width="1" opacity="0.35"/>')
+        s.append(f'<text x="{x:.1f}" y="{by+118}" fill="{FG}" font-size="12" font-family="{MONO}">{lb}</text>')
+    s.append(f'<text x="34" y="{by+140}" fill="{MUTED}" font-size="11.5">'
+             f'A4 扫描件 ≈ 175 DPI · 招投标文档 → 密集文本长页</text>')
+    # 右侧两条结论
+    cx0 = 470
+    boxes = [("4 个目录尺寸完全一致", "→ 不必分目录测，跑混合即可", C_B, 46),
+             ("关键变量不是分辨率，是每页文本行数", "det 检出多少框，rec 就跑多少次；rec 调用次数才是耗时主因", C_E, 132),
+             ("样本量 104 张偏少", "需 --loop 循环凑时长，引入 page cache 效应，报告须注明", C_BAD, 218)]
+    for title, desc, color, y in boxes:
+        h = 72 if y != 46 else 72
+        fill = {C_B: "rgba(39,255,100,0.07)", C_E: "rgba(251,191,36,0.07)", C_BAD: "rgba(248,113,113,0.07)"}[color]
+        stroke = {C_B: "rgba(39,255,100,0.3)", C_E: "rgba(251,191,36,0.3)", C_BAD: "rgba(248,113,113,0.3)"}[color]
+        s.append(f'<rect x="{cx0}" y="{y}" width="410" height="80" rx="9" fill="{fill}" stroke="{stroke}"/>')
+        s.append(f'<text x="{cx0+16}" y="{y+26}" fill="{color}" font-size="12.5" font-weight="700">{title}</text>')
+        # 描述自动折行
+        words, line, lines = list(desc), "", []
+        for ch in words:
+            line += ch
+            if len(line) >= 30:
+                lines.append(line); line = ""
+        if line: lines.append(line)
+        for j, ln in enumerate(lines[:3]):
+            s.append(f'<text x="{cx0+16}" y="{y+46+j*17}" fill="{MUTED}" font-size="11.5">{ln}</text>')
+    write("fig10_dataset.svg", s)
+
+
+# ---------------------------------------------------------------- fig11
+def fig11():
+    """前处理缩放链路 —— det 的 input_shape 从哪里来"""
+    W, H = 880, 350
+    s = head(W, H, None, "det 看到的是 PaddleX 前处理缩放后的尺寸，不是原图 2048 —— 这是上一版方案的关键修正")
+    # 链路
+    steps = [("原图", "1449×2048"), ("limit_type: max", "limit_side_len = L"), ("对齐 32 的倍数", ""), ("det 输入", "")]
+    x = 0
+    for i, (t, sub) in enumerate(steps):
+        w = 150
+        s.append(f'<rect x="{x}" y="48" width="{w}" height="46" rx="8" fill="rgba(255,255,255,0.04)" '
+                 f'stroke="rgba(255,255,255,0.12)"/>')
+        s.append(f'<text x="{x+w/2}" y="{68 if sub else 76}" fill="{FG}" font-size="12" text-anchor="middle">{t}</text>')
+        if sub:
+            s.append(f'<text x="{x+w/2}" y="84" fill="{MUTED}" font-size="10.5" text-anchor="middle" '
+                     f'font-family="{MONO}">{sub}</text>')
+        if i < len(steps) - 1:
+            s.append(f'<path d="M{x+w+4},71 L{x+w+18},71" stroke="{MUTED}" stroke-width="1.4" '
+                     f'marker-end="url(#ar)"/>')
+        x += w + 22
+    s.insert(1, f'<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" '
+                f'orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="{MUTED}"/></marker></defs>')
+    # 表格
+    ty = 124
+    cols = [(0, "limit_side_len"), (190, "竖版 1449×2048 →"), (400, "横版 2048×1449 →")]
+    for cx, t in cols:
+        s.append(f'<text x="{cx}" y="{ty}" fill="{MUTED}" font-size="11.5">{t}</text>')
+    s.append(f'<line x1="0" y1="{ty+8}" x2="600" y2="{ty+8}" stroke="{AXIS}"/>')
+    rows = [("736", "512×736", "736×512"), ("960", "672×960", "960×672"), ("1280", "896×1280", "1280×896")]
+    for i, (a_, b_, c_) in enumerate(rows):
+        y = ty + 32 + i * 26
+        hl = a_ == "960"
+        col = C_C1 if hl else FG
+        wt = "700" if hl else "400"
+        s.append(f'<text x="0" y="{y}" fill="{col}" font-size="12.5" font-weight="{wt}" font-family="{MONO}">{a_}</text>')
+        s.append(f'<text x="190" y="{y}" fill="{col}" font-size="12.5" font-family="{MONO}">{b_}</text>')
+        s.append(f'<text x="400" y="{y}" fill="{col}" font-size="12.5" font-family="{MONO}">{c_}</text>')
+    s.append(f'<text x="560" y="{ty+58}" fill="{C_C1}" font-size="11" font-weight="600">← 产线取值</text>')
+    # 范围条
+    ry = 250
+    lo, hi = 256, 1536
+    def rx(v): return (v - lo) / (hi - lo) * 600
+    s.append(f'<rect x="{rx(320):.1f}" y="{ry}" width="{rx(1408)-rx(320):.1f}" height="22" rx="4" '
+             f'fill="rgba(39,255,100,0.18)" stroke="{C_B}"/>')
+    s.append(f'<rect x="{rx(512):.1f}" y="{ry+4}" width="{rx(1280)-rx(512):.1f}" height="14" rx="3" fill="{C_C1}" opacity="0.8"/>')
+    s.append(f'<text x="{rx(512):.1f}" y="{ry-8}" fill="{C_C1}" font-size="11" font-family="{MONO}">512</text>')
+    s.append(f'<text x="{rx(1280):.1f}" y="{ry-8}" fill="{C_C1}" font-size="11" text-anchor="end" font-family="{MONO}">1280</text>')
+    s.append(f'<text x="{rx(320):.1f}" y="{ry+38}" fill="{C_B}" font-size="11" font-family="{MONO}">320</text>')
+    s.append(f'<text x="{rx(1408):.1f}" y="{ry+38}" fill="{C_B}" font-size="11" text-anchor="end" font-family="{MONO}">1408</text>')
+    s.append(f'<text x="622" y="{ry-2}" fill="{C_C1}" font-size="11.5">det 实际输入范围</text>')
+    s.append(f'<text x="622" y="{ry+16}" fill="{C_C1}" font-size="12" font-family="{MONO}">512 ~ 1280</text>')
+    s.append(f'<text x="622" y="{ry+42}" fill="{C_B}" font-size="11.5" font-weight="600">atc input_shape</text>')
+    s.append(f'<text x="622" y="{ry+60}" fill="{C_B}" font-size="12" font-family="{MONO}">320 ~ 1408（留余量）</text>')
+    # 右上：修正前后
+    s.append(f'<rect x="628" y="110" width="252" height="104" rx="9" fill="rgba(248,113,113,0.06)" '
+             f'stroke="rgba(248,113,113,0.28)"/>')
+    s.append(f'<text x="644" y="134" fill="{C_BAD}" font-size="12" font-weight="700">上一版的错误取值</text>')
+    s.append(f'<text x="644" y="156" fill="{MUTED}" font-size="11.5" font-family="{MONO}">32~1600 / 1440~2080</text>')
+    s.append(f'<text x="644" y="178" fill="{MUTED}" font-size="11.5">按<tspan fill="{FG}">原图</tspan>尺寸推导 —— 档位过多，</text>')
+    s.append(f'<text x="644" y="196" fill="{MUTED}" font-size="11.5">且下界 1440 根本用不到。</text>')
+    write("fig11_scaling.svg", s)
+
+
+# ---------------------------------------------------------------- fig12
+def fig12():
+    """多实例爬坡的判读示意（非实测）"""
+    W, H = 880, 330
+    s = head(W, H, None, "多实例吞吐爬坡 —— 判读示意图，非实测数据（实验尚未执行）")
+    x0, y0, pw, ph = 60, 56, 420, 210
+    s.append(f'<line x1="{x0}" y1="{y0+ph}" x2="{x0+pw}" y2="{y0+ph}" stroke="{AXIS}"/>')
+    s.append(f'<line x1="{x0}" y1="{y0}" x2="{x0}" y2="{y0+ph}" stroke="{AXIS}"/>')
+    s.append(f'<text x="{x0+pw/2}" y="{y0+ph+26}" fill="{MUTED}" font-size="11.5" text-anchor="middle">实例数 →</text>')
+    s.append(f'<text x="{x0-44}" y="{y0+ph/2}" fill="{MUTED}" font-size="11.5">聚合 QPS</text>')
+    import math
+    def curve(f, color, dash=""):
+        pts = []
+        for i in range(41):
+            t = i / 40
+            pts.append((x0 + pw * t, y0 + ph - ph * f(t)))
+        d = " ".join(f'{"M" if i==0 else "L"}{p[0]:.1f},{p[1]:.1f}' for i, p in enumerate(pts))
+        s.append(f'<path d="{d}" fill="none" stroke="{color}" stroke-width="2.4" {dash}/>')
+        return pts
+    # 理想线性（参考）
+    curve(lambda t: 0.92 * t, C_DIM, 'stroke-dasharray="5 5"')
+    # 饱和型
+    curve(lambda t: 0.80 * (1 - math.exp(-3.4 * t)), C_B)
+    # 过并发下降型
+    curve(lambda t: max(0.0, 0.86 * (1 - math.exp(-4.2 * t)) - 0.55 * max(0, t - 0.5) ** 1.6), C_BAD)
+    # 拐点
+    kx, ky = x0 + pw * 0.5, y0 + ph - ph * (0.80 * (1 - math.exp(-1.7)))
+    s.append(f'<circle cx="{kx:.1f}" cy="{ky:.1f}" r="5.5" fill="#0f1115" stroke="{C_E}" stroke-width="2.5"/>')
+    s.append(f'<line x1="{kx:.1f}" y1="{ky:.1f}" x2="{kx:.1f}" y2="{y0+ph}" stroke="{C_E}" '
+             f'stroke-width="1" stroke-dasharray="3 3" opacity="0.6"/>')
+    s.append(f'<text x="{kx+12:.1f}" y="{ky+26:.1f}" fill="{C_E}" font-size="12" font-weight="700">拐点 = 最优并发</text>')
+    s.extend(legend(x0, y0 - 10, [(C_DIM, "理想线性"), (C_B, "饱和"), (C_BAD, "过并发劣化")]))
+    # 右侧判读规则
+    cx0 = 520
+    s.append(f'<text x="{cx0}" y="{y0+8}" fill="{FG}" font-size="13" font-weight="700">判读规则</text>')
+    rules = [("聚合 QPS 持平/下降", "该点即整机吞吐上限", C_E),
+             ("AICore% > 90，CPU 未满", "NPU 瓶颈 → 减小 limit_side_len / 增大 batch", C_C1),
+             ("CPU 满，AICore% 仅 30~50", "CPU 前后处理瓶颈 → 加核 / KPCV，切更多 vNPU 无用", C_BAD),
+             ("显存随实例线性涨", "注意 OOM：权重 + OUTPUTSIZE×2 / 实例", C_A)]
+    for i, (cond, concl, c) in enumerate(rules):
+        y = y0 + 34 + i * 54
+        s.append(f'<rect x="{cx0}" y="{y-14}" width="3" height="40" rx="1.5" fill="{c}"/>')
+        s.append(f'<text x="{cx0+12}" y="{y}" fill="{c}" font-size="11.8" font-weight="600">{cond}</text>')
+        s.append(f'<text x="{cx0+12}" y="{y+18}" fill="{MUTED}" font-size="11">{concl}</text>')
+    write("fig12_ramp.svg", s)
+
+
+for fn in (fig10, fig11, fig12):
+    fn()
+print("project-2 charts done")
