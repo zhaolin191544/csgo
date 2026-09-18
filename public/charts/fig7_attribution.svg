@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 300" width="880" height="300" font-family="'Noto Sans SC','PingFang SC','Microsoft YaHei','Helvetica Neue',Helvetica,Arial,sans-serif">
+<rect width="880" height="300" fill="none"/>
+<text x="0" y="22" fill="#9aa0a6" font-size="12.5">100 终端 · A（82,726）→ B（178,780）· 总增幅 +116.1%</text>
+<rect x="40.0" y="108" width="722.4" height="58" fill="#27FF64" opacity="0.9" rx="6"/>
+<text x="401.2" y="145" fill="#0b0d10" font-size="19" font-weight="800" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">90.3%</text>
+<rect x="762.4" y="108" width="54.5" height="58" fill="#a78bfa" opacity="0.9" />
+<rect x="816.8" y="108" width="23.2" height="58" fill="#475569" opacity="0.9" rx="6"/>
+<text x="401.2" y="196" fill="#27FF64" font-size="14" font-weight="700" text-anchor="middle">shared_buffers 1GB → 8GB</text>
+<text x="401.2" y="217" fill="#9aa0a6" font-size="12.5" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">+86,731 tpmC</text>
+<rect x="504" y="181" width="10" height="10" rx="2.5" fill="#a78bfa"/>
+<text x="520" y="190" fill="#e8eaed" font-size="11.5">wal_level + max_connections</text>
+<text x="840" y="190" fill="#9aa0a6" font-size="12" text-anchor="end" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">+6,540（6.8%）</text>
+<line x1="789.6" y1="166" x2="789.6" y2="181" stroke="#a78bfa" stroke-width="1" opacity="0.45"/>
+<rect x="504" y="205" width="10" height="10" rx="2.5" fill="#475569"/>
+<text x="520" y="214" fill="#e8eaed" font-size="11.5">其余全部 KAOT 参数（40+ 项）</text>
+<text x="840" y="214" fill="#9aa0a6" font-size="12" text-anchor="end" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">+2,783（2.9%）</text>
+<line x1="828.4" y1="166" x2="828.4" y2="205" stroke="#475569" stroke-width="1" opacity="0.45"/>
+<text x="40" y="92" fill="#9aa0a6" font-size="12">总增量 +96,054 tpmC</text>
+<rect x="40" y="242" width="800" height="42" rx="8" fill="rgba(39,255,100,0.07)" stroke="rgba(39,255,100,0.25)"/>
+<text x="58" y="268" fill="#e8eaed" font-size="13">交叉印证：C1@100（8GB + KAOT 全部其他参数）= 169,968　vs　F（8GB，什么都不加）= 169,457，<tspan fill="#27FF64" font-weight="700">相差 0.3%</tspan></text>
+</svg>

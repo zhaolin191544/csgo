@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 250" width="880" height="250" font-family="'Noto Sans SC','PingFang SC','Microsoft YaHei','Helvetica Neue',Helvetica,Arial,sans-serif">
+<rect width="880" height="250" fill="none"/>
+<text x="0" y="22" fill="#9aa0a6" font-size="12.5">2026-09-02 ~ 09-16 · 六个阶段</text>
+<line x1="40" y1="120" x2="840" y2="120" stroke="rgba(255,255,255,0.22)" stroke-width="1.4"/>
+<circle cx="140.0" cy="120" r="8" fill="#0f1115" stroke="#f87171" stroke-width="3"/>
+<text x="140.0" y="76" fill="#f87171" font-size="26" font-weight="800" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">−24.5%</text>
+<text x="140.0" y="98" fill="#9aa0a6" font-size="11.5" text-anchor="middle">阶段一</text>
+<text x="140.0" y="150" fill="#e8eaed" font-size="12.5" text-anchor="middle">KAOT 使性能下降</text>
+<path d="M154.0,120 L326.0,120" stroke="#f87171" stroke-width="1.6" opacity="0.45"/>
+<circle cx="340.0" cy="120" r="8" fill="#0f1115" stroke="#fbbf24" stroke-width="3"/>
+<text x="340.0" y="76" fill="#fbbf24" font-size="26" font-weight="800" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">−5.2%</text>
+<text x="340.0" y="98" fill="#9aa0a6" font-size="11.5" text-anchor="middle">阶段二</text>
+<text x="340.0" y="150" fill="#e8eaed" font-size="12.5" text-anchor="middle">还原数据后同口径复测</text>
+<path d="M354.0,120 L526.0,120" stroke="#fbbf24" stroke-width="1.6" opacity="0.45"/>
+<circle cx="540.0" cy="120" r="8" fill="#0f1115" stroke="#38bdf8" stroke-width="3"/>
+<text x="540.0" y="76" fill="#38bdf8" font-size="26" font-weight="800" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">+14.6%</text>
+<text x="540.0" y="98" fill="#9aa0a6" font-size="11.5" text-anchor="middle">阶段三</text>
+<text x="540.0" y="150" fill="#e8eaed" font-size="12.5" text-anchor="middle">buffer 改 8GB（仅 16 终端）</text>
+<path d="M554.0,120 L726.0,120" stroke="#38bdf8" stroke-width="1.6" opacity="0.45"/>
+<circle cx="740.0" cy="120" r="8" fill="#0f1115" stroke="#27FF64" stroke-width="3"/>
+<text x="740.0" y="76" fill="#27FF64" font-size="26" font-weight="800" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">+116.1%</text>
+<text x="740.0" y="98" fill="#9aa0a6" font-size="11.5" text-anchor="middle">阶段四~六</text>
+<text x="740.0" y="150" fill="#e8eaed" font-size="12.5" text-anchor="middle">100 终端下模板实际提升</text>
+<text x="40" y="230" fill="#9aa0a6" font-size="12">前三个阶段的结论全部被后续实验推翻——单点对比只能得到「有没有效」，无法得到「为什么」</text>
+</svg>

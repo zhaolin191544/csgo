@@ -1,6 +1,6 @@
 <template>
    <TextType 
-  :text="['Map++: Towards User-Participatory', 'Visual Simultaneous Localization and Mapping', 'Systems with Efficient Map Expansion and Sharing']"
+  :text="['−24.5%  →  +116.1%', '90.3% 的增益来自一个参数', 'Kunpeng 920 · openGauss · TPC-C']"
   :typingSpeed="40"
   :pauseDuration="1500"
   :deletingSpeed="20"
@@ -91,11 +91,13 @@ interface HyperspeedOptions {
 }
 
 const menuItems = [
- { label: '研究背景', ariaLabel: 'Go to home page', link: '/',name:"郭青松" },
- { label: 'SLAM', ariaLabel: 'Learn about us', link: '/about',name:"郭青松" },
- { label: 'Map++', ariaLabel: 'View our services', link: '/services',name:"赵麟"},
- { label: '结果评估', ariaLabel: 'Get in touch', link: '/contact',name: "蒋俊毅"},
- { label: '总结感悟', ariaLabel: 'Get in touch', link: '/contact',name: "蒋俊毅"},
+ { label: '背景与难点', ariaLabel: 'KAOT 与本次工作的三个难点', link: '/', name: "01-02" },
+ { label: '环境与方法', ariaLabel: '实验环境、配置分组与实验协议', link: '/', name: "03" },
+ { label: '阶段一~二', ariaLabel: '全量套用与方法论修正', link: '/', name: "04-05" },
+ { label: '阶段三~四', ariaLabel: '消融实验与并发扫描', link: '/', name: "06-07" },
+ { label: '阶段五~六', ariaLabel: '单参数隔离与容量扫描', link: '/', name: "08-09" },
+ { label: '结论与建议', ariaLabel: '主结论、推荐配置与工具改进建议', link: '/', name: "10" },
+ { label: '局限与收获', ariaLabel: '已知局限、后续工作与方法论收获', link: '/', name: "11-13" },
 ]
 
 const socialItems = [
