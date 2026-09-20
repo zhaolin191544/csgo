@@ -1349,14 +1349,20 @@ watch(
   height: 100%;
   position: absolute;
   overflow: hidden;
-  z-index:-1;
+  z-index: 0;
 }
 
 .hyperspeed-container :deep(canvas) {
   width: 100% !important;
   height: 100% !important;
   display: block;
-  z-index:-1;
+  z-index: 0;
+}
+
+/* 浅色主题下 slidev-layout 会铺一层白底，把 z-index:-1 的画布盖住；
+   封面保留深色 hero，画布提到 0，文字在 slides.md 里用 relative z-10 压在其上 */
+.slidev-layout {
+  background: #05060a !important;
 }
 
 .my-typewriter {

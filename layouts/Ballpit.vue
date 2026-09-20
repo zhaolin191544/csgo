@@ -34,7 +34,7 @@ const { currentPage } = useNav()
 const { $slidev } = useSlideContext()
 
 // 假设出问题的页面是第 5 和第 7 页
-const PROBLEMATIC_SLIDES = [27];
+const PROBLEMATIC_SLIDES = [10];
 
 const REFRESHED_PAGES_KEY = 'slidev_refreshed_pages_log';
 
@@ -945,9 +945,11 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="fixed inset-0 flex flex-col items-center pointer-events-none z-10">
+  <!-- 浅色主题下 slide 底色为白，白色小球会消失；此处铺深色底，与封面 hero 呼应 -->
+  <div class="fixed inset-0 z-0" style="background:#05060a"></div>
+  <div class="fixed inset-0 flex flex-col items-center pointer-events-none z-10 text-white">
     <div font-serif text-center text-6xl mt-22>Q&A</div>
     <div font-serif text-center text-5xl mt-12>Thank You</div>
   </div>
-  <canvas ref="canvasRef" :class="['w-full', 'h-full', props.className]"/>
+  <canvas ref="canvasRef" :class="['w-full', 'h-full', 'relative', 'z-[5]', props.className]"/>
 </template>

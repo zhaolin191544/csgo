@@ -1,61 +1,61 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" width="880" height="400" font-family="'Noto Sans SC','PingFang SC','Microsoft YaHei','Helvetica Neue',Helvetica,Arial,sans-serif">
 <rect width="880" height="400" fill="none"/>
-<text x="0" y="22" fill="#9aa0a6" font-size="12.5">模板收益高度依赖并发量级——前三阶段恰好都落在 16 终端</text>
-<line x1="76" y1="318.0" x2="572" y2="318.0" stroke="rgba(255,255,255,0.08)"/>
-<text x="66" y="322.0" fill="#9aa0a6" font-size="11" text-anchor="end" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">0</text>
-<line x1="76" y1="260.0" x2="572" y2="260.0" stroke="rgba(255,255,255,0.08)"/>
-<text x="66" y="264.0" fill="#9aa0a6" font-size="11" text-anchor="end" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">47,500</text>
-<line x1="76" y1="202.0" x2="572" y2="202.0" stroke="rgba(255,255,255,0.08)"/>
-<text x="66" y="206.0" fill="#9aa0a6" font-size="11" text-anchor="end" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">95,000</text>
-<line x1="76" y1="144.0" x2="572" y2="144.0" stroke="rgba(255,255,255,0.08)"/>
-<text x="66" y="148.0" fill="#9aa0a6" font-size="11" text-anchor="end" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">142,500</text>
-<line x1="76" y1="86.0" x2="572" y2="86.0" stroke="rgba(255,255,255,0.08)"/>
-<text x="66" y="90.0" fill="#9aa0a6" font-size="11" text-anchor="end" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">190,000</text>
-<text x="76.0" y="338" fill="#e8eaed" font-size="12.5" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">16</text>
-<text x="241.3" y="338" fill="#e8eaed" font-size="12.5" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">32</text>
-<text x="406.7" y="338" fill="#e8eaed" font-size="12.5" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">64</text>
-<text x="572.0" y="338" fill="#e8eaed" font-size="12.5" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">100</text>
-<text x="324.0" y="360" fill="#9aa0a6" font-size="12" text-anchor="middle">并发终端数</text>
-<line x1="76" y1="318" x2="572" y2="318" stroke="rgba(255,255,255,0.22)"/>
-<rect x="66" y="86" width="46" height="232" fill="rgba(251,191,36,0.10)"/>
-<text x="89" y="306" fill="#fbbf24" font-size="10.5" text-anchor="middle" font-weight="700">前三阶段</text>
-<text x="89" y="317" fill="#fbbf24" font-size="10.5" text-anchor="middle" font-weight="700">的盲区</text>
-<path d="M76.0,249.8 L241.3,239.2 L406.7,224.0 L572.0,217.9" fill="none" stroke="#94a3b8" stroke-width="2.6" stroke-linejoin="round"/>
-<circle cx="76.0" cy="249.8" r="4.4" fill="#0f1115" stroke="#94a3b8" stroke-width="2.4"/>
-<circle cx="241.3" cy="239.2" r="4.4" fill="#0f1115" stroke="#94a3b8" stroke-width="2.4"/>
-<circle cx="406.7" cy="224.0" r="4.4" fill="#0f1115" stroke="#94a3b8" stroke-width="2.4"/>
-<circle cx="572.0" cy="217.9" r="4.4" fill="#0f1115" stroke="#94a3b8" stroke-width="2.4"/>
-<text x="582.0" y="221.9" fill="#94a3b8" font-size="12" font-weight="700" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">81,954</text>
-<path d="M76.0,245.7 L241.3,186.4 L406.7,129.3 L572.0,109.8" fill="none" stroke="#27FF64" stroke-width="2.6" stroke-linejoin="round"/>
-<circle cx="76.0" cy="245.7" r="4.4" fill="#0f1115" stroke="#27FF64" stroke-width="2.4"/>
-<circle cx="241.3" cy="186.4" r="4.4" fill="#0f1115" stroke="#27FF64" stroke-width="2.4"/>
-<circle cx="406.7" cy="129.3" r="4.4" fill="#0f1115" stroke="#27FF64" stroke-width="2.4"/>
-<circle cx="572.0" cy="109.8" r="4.4" fill="#0f1115" stroke="#27FF64" stroke-width="2.4"/>
-<text x="582.0" y="100.8" fill="#27FF64" font-size="12" font-weight="700" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">170,522</text>
-<path d="M76.0,244.0 L241.3,191.4 L406.7,127.5 L572.0,110.5" fill="none" stroke="#38bdf8" stroke-width="2.6" stroke-linejoin="round"/>
-<circle cx="76.0" cy="244.0" r="4.4" fill="#0f1115" stroke="#38bdf8" stroke-width="2.4"/>
-<circle cx="241.3" cy="191.4" r="4.4" fill="#0f1115" stroke="#38bdf8" stroke-width="2.4"/>
-<circle cx="406.7" cy="127.5" r="4.4" fill="#0f1115" stroke="#38bdf8" stroke-width="2.4"/>
-<circle cx="572.0" cy="110.5" r="4.4" fill="#0f1115" stroke="#38bdf8" stroke-width="2.4"/>
-<text x="582.0" y="125.5" fill="#38bdf8" font-size="12" font-weight="700" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">169,968</text>
-<rect x="76" y="56" width="11" height="11" rx="2.5" fill="#94a3b8"/>
-<text x="93" y="65" fill="#9aa0a6" font-size="12">A  默认 1GB</text>
-<rect x="221.6" y="56" width="11" height="11" rx="2.5" fill="#27FF64"/>
-<text x="238.6" y="65" fill="#9aa0a6" font-size="12">B  KAOT 全量 151GB</text>
-<rect x="447.0" y="56" width="11" height="11" rx="2.5" fill="#38bdf8"/>
-<text x="464.0" y="65" fill="#9aa0a6" font-size="12">C1 KAOT + 8GB</text>
-<text x="664" y="100" fill="#e8eaed" font-size="13" font-weight="700">16 → 100 终端吞吐倍数</text>
-<text x="664" y="140" fill="#e8eaed" font-size="13" font-weight="700" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">A</text>
-<rect x="694" y="126" width="57.8" height="17" rx="3.5" fill="#94a3b8" opacity="0.85"/>
-<text x="759.8" y="140" fill="#94a3b8" font-size="13" font-weight="700" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">1.47×</text>
-<text x="664" y="186" fill="#e8eaed" font-size="13" font-weight="700" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">B</text>
-<rect x="694" y="172" width="113.3" height="17" rx="3.5" fill="#27FF64" opacity="0.85"/>
-<text x="815.3" y="186" fill="#27FF64" font-size="13" font-weight="700" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">2.88×</text>
-<text x="664" y="232" fill="#e8eaed" font-size="13" font-weight="700" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">C1</text>
-<rect x="694" y="218" width="110.1" height="17" rx="3.5" fill="#38bdf8" opacity="0.85"/>
-<text x="812.1" y="232" fill="#38bdf8" font-size="13" font-weight="700" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">2.80×</text>
-<rect x="664" y="268" width="210" height="52" rx="8" fill="rgba(148,163,184,0.10)"/>
-<text x="678" y="290" fill="#9aa0a6" font-size="12">A 组在 ≈8.2 万 tpmC 处撞墙；</text>
-<text x="678" y="309" fill="#9aa0a6" font-size="12">B 与 C1 在 100 终端仅差 0.3%。</text>
-<text x="14" y="388" fill="#9aa0a6" font-size="11.5">151GB 的管理开销是固定成本：吞吐涨到 2.9 倍后被摊薄至不可见</text>
+<text x="0" y="22" fill="#5b6673" font-size="12.5">模板收益高度依赖并发量级——前三阶段恰好都落在 16 终端</text>
+<line x1="76" y1="318.0" x2="572" y2="318.0" stroke="rgba(0,0,0,0.08)"/>
+<text x="66" y="322.0" fill="#5b6673" font-size="11" text-anchor="end" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">0</text>
+<line x1="76" y1="260.0" x2="572" y2="260.0" stroke="rgba(0,0,0,0.08)"/>
+<text x="66" y="264.0" fill="#5b6673" font-size="11" text-anchor="end" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">47,500</text>
+<line x1="76" y1="202.0" x2="572" y2="202.0" stroke="rgba(0,0,0,0.08)"/>
+<text x="66" y="206.0" fill="#5b6673" font-size="11" text-anchor="end" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">95,000</text>
+<line x1="76" y1="144.0" x2="572" y2="144.0" stroke="rgba(0,0,0,0.08)"/>
+<text x="66" y="148.0" fill="#5b6673" font-size="11" text-anchor="end" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">142,500</text>
+<line x1="76" y1="86.0" x2="572" y2="86.0" stroke="rgba(0,0,0,0.08)"/>
+<text x="66" y="90.0" fill="#5b6673" font-size="11" text-anchor="end" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">190,000</text>
+<text x="76.0" y="338" fill="#1f2328" font-size="12.5" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">16</text>
+<text x="241.3" y="338" fill="#1f2328" font-size="12.5" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">32</text>
+<text x="406.7" y="338" fill="#1f2328" font-size="12.5" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">64</text>
+<text x="572.0" y="338" fill="#1f2328" font-size="12.5" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">100</text>
+<text x="324.0" y="360" fill="#5b6673" font-size="12" text-anchor="middle">并发终端数</text>
+<line x1="76" y1="318" x2="572" y2="318" stroke="rgba(0,0,0,0.22)"/>
+<rect x="66" y="86" width="46" height="232" fill="rgba(217,119,6,0.10)"/>
+<text x="89" y="306" fill="#d97706" font-size="10.5" text-anchor="middle" font-weight="700">前三阶段</text>
+<text x="89" y="317" fill="#d97706" font-size="10.5" text-anchor="middle" font-weight="700">的盲区</text>
+<path d="M76.0,249.8 L241.3,239.2 L406.7,224.0 L572.0,217.9" fill="none" stroke="#64748b" stroke-width="2.6" stroke-linejoin="round"/>
+<circle cx="76.0" cy="249.8" r="4.4" fill="#ffffff" stroke="#64748b" stroke-width="2.4"/>
+<circle cx="241.3" cy="239.2" r="4.4" fill="#ffffff" stroke="#64748b" stroke-width="2.4"/>
+<circle cx="406.7" cy="224.0" r="4.4" fill="#ffffff" stroke="#64748b" stroke-width="2.4"/>
+<circle cx="572.0" cy="217.9" r="4.4" fill="#ffffff" stroke="#64748b" stroke-width="2.4"/>
+<text x="582.0" y="221.9" fill="#64748b" font-size="12" font-weight="700" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">81,954</text>
+<path d="M76.0,245.7 L241.3,186.4 L406.7,129.3 L572.0,109.8" fill="none" stroke="#16a34a" stroke-width="2.6" stroke-linejoin="round"/>
+<circle cx="76.0" cy="245.7" r="4.4" fill="#ffffff" stroke="#16a34a" stroke-width="2.4"/>
+<circle cx="241.3" cy="186.4" r="4.4" fill="#ffffff" stroke="#16a34a" stroke-width="2.4"/>
+<circle cx="406.7" cy="129.3" r="4.4" fill="#ffffff" stroke="#16a34a" stroke-width="2.4"/>
+<circle cx="572.0" cy="109.8" r="4.4" fill="#ffffff" stroke="#16a34a" stroke-width="2.4"/>
+<text x="582.0" y="100.8" fill="#16a34a" font-size="12" font-weight="700" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">170,522</text>
+<path d="M76.0,244.0 L241.3,191.4 L406.7,127.5 L572.0,110.5" fill="none" stroke="#0284c7" stroke-width="2.6" stroke-linejoin="round"/>
+<circle cx="76.0" cy="244.0" r="4.4" fill="#ffffff" stroke="#0284c7" stroke-width="2.4"/>
+<circle cx="241.3" cy="191.4" r="4.4" fill="#ffffff" stroke="#0284c7" stroke-width="2.4"/>
+<circle cx="406.7" cy="127.5" r="4.4" fill="#ffffff" stroke="#0284c7" stroke-width="2.4"/>
+<circle cx="572.0" cy="110.5" r="4.4" fill="#ffffff" stroke="#0284c7" stroke-width="2.4"/>
+<text x="582.0" y="125.5" fill="#0284c7" font-size="12" font-weight="700" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">169,968</text>
+<rect x="76" y="56" width="11" height="11" rx="2.5" fill="#64748b"/>
+<text x="93" y="65" fill="#5b6673" font-size="12">A  默认 1GB</text>
+<rect x="221.6" y="56" width="11" height="11" rx="2.5" fill="#16a34a"/>
+<text x="238.6" y="65" fill="#5b6673" font-size="12">B  KAOT 全量 151GB</text>
+<rect x="447.0" y="56" width="11" height="11" rx="2.5" fill="#0284c7"/>
+<text x="464.0" y="65" fill="#5b6673" font-size="12">C1 KAOT + 8GB</text>
+<text x="664" y="100" fill="#1f2328" font-size="13" font-weight="700">16 → 100 终端吞吐倍数</text>
+<text x="664" y="140" fill="#1f2328" font-size="13" font-weight="700" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">A</text>
+<rect x="694" y="126" width="57.8" height="17" rx="3.5" fill="#64748b" opacity="0.85"/>
+<text x="759.8" y="140" fill="#64748b" font-size="13" font-weight="700" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">1.47×</text>
+<text x="664" y="186" fill="#1f2328" font-size="13" font-weight="700" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">B</text>
+<rect x="694" y="172" width="113.3" height="17" rx="3.5" fill="#16a34a" opacity="0.85"/>
+<text x="815.3" y="186" fill="#16a34a" font-size="13" font-weight="700" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">2.88×</text>
+<text x="664" y="232" fill="#1f2328" font-size="13" font-weight="700" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">C1</text>
+<rect x="694" y="218" width="110.1" height="17" rx="3.5" fill="#0284c7" opacity="0.85"/>
+<text x="812.1" y="232" fill="#0284c7" font-size="13" font-weight="700" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">2.80×</text>
+<rect x="664" y="268" width="210" height="52" rx="8" fill="rgba(100,116,139,0.10)"/>
+<text x="678" y="290" fill="#5b6673" font-size="12">A 组在 ≈8.2 万 tpmC 处撞墙；</text>
+<text x="678" y="309" fill="#5b6673" font-size="12">B 与 C1 在 100 终端仅差 0.3%。</text>
+<text x="14" y="388" fill="#5b6673" font-size="11.5">151GB 的管理开销是固定成本：吞吐涨到 2.9 倍后被摊薄至不可见</text>
 </svg>

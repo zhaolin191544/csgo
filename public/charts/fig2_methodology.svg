@@ -1,37 +1,37 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 360" width="880" height="360" font-family="'Noto Sans SC','PingFang SC','Microsoft YaHei','Helvetica Neue',Helvetica,Arial,sans-serif">
 <rect width="880" height="360" fill="none"/>
-<text x="0" y="22" fill="#9aa0a6" font-size="12.5">同一份配置，只改测试方法，不改任何数据库参数</text>
-<line x1="70" y1="290.0" x2="630" y2="290.0" stroke="rgba(255,255,255,0.08)"/>
-<text x="60" y="294.0" fill="#9aa0a6" font-size="11" text-anchor="end" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">0</text>
-<line x1="70" y1="220.7" x2="630" y2="220.7" stroke="rgba(255,255,255,0.08)"/>
-<text x="60" y="224.7" fill="#9aa0a6" font-size="11" text-anchor="end" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">20,000</text>
-<line x1="70" y1="151.3" x2="630" y2="151.3" stroke="rgba(255,255,255,0.08)"/>
-<text x="60" y="155.3" fill="#9aa0a6" font-size="11" text-anchor="end" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">40,000</text>
-<line x1="70" y1="82.0" x2="630" y2="82.0" stroke="rgba(255,255,255,0.08)"/>
-<text x="60" y="86.0" fill="#9aa0a6" font-size="11" text-anchor="end" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">60,000</text>
-<rect x="133.6" y="126.5" width="74" height="163.5" rx="4" fill="#94a3b8" opacity="0.28"/>
-<text x="170.6" y="117.5" fill="#e8eaed" font-size="13" font-weight="700" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">47,153</text>
-<text x="170.6" y="308" fill="#9aa0a6" font-size="11.5" text-anchor="middle">未还原</text>
-<rect x="223.6" y="111.2" width="74" height="178.8" rx="4" fill="#94a3b8" opacity="0.92"/>
-<text x="260.6" y="102.2" fill="#e8eaed" font-size="13" font-weight="700" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">51,579</text>
-<text x="260.6" y="308" fill="#9aa0a6" font-size="11.5" text-anchor="middle">已还原</text>
-<text x="215.6" y="330" fill="#e8eaed" font-size="13.5" font-weight="600" text-anchor="middle">默认参数</text>
-<text x="215.6" y="77.2" fill="#94a3b8" font-size="17" font-weight="700" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">+9.4%</text>
-<rect x="391.2" y="166.6" width="74" height="123.4" rx="4" fill="#27FF64" opacity="0.28"/>
-<text x="428.2" y="157.6" fill="#e8eaed" font-size="13" font-weight="700" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">35,600</text>
-<text x="428.2" y="308" fill="#9aa0a6" font-size="11.5" text-anchor="middle">未还原</text>
-<rect x="481.2" y="120.5" width="74" height="169.5" rx="4" fill="#27FF64" opacity="0.92"/>
-<text x="518.2" y="111.5" fill="#e8eaed" font-size="13" font-weight="700" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">48,883</text>
-<text x="518.2" y="308" fill="#9aa0a6" font-size="11.5" text-anchor="middle">已还原</text>
-<text x="473.2" y="330" fill="#e8eaed" font-size="13.5" font-weight="600" text-anchor="middle">KAOT 全量</text>
-<text x="473.2" y="86.5" fill="#27FF64" font-size="17" font-weight="700" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">+37.3%</text>
-<line x1="70" y1="290" x2="630" y2="290" stroke="rgba(255,255,255,0.22)"/>
-<rect x="660" y="82" width="220" height="208" rx="10" fill="rgba(39,255,100,0.06)" stroke="rgba(39,255,100,0.28)"/>
-<text x="678" y="112" fill="#27FF64" font-size="13" font-weight="700">KAOT 涨 37.3%</text>
-<text x="678" y="138" fill="#e8eaed" font-size="13" font-weight="400">默认只涨 9.4%</text>
-<text x="678" y="164" fill="#e8eaed" font-size="13" font-weight="400"></text>
-<text x="678" y="190" fill="#9aa0a6" font-size="13" font-weight="400">−24.5% 中的绝大部分</text>
-<text x="678" y="216" fill="#9aa0a6" font-size="13" font-weight="400">来自数据磨损，</text>
-<text x="678" y="242" fill="#9aa0a6" font-size="13" font-weight="400">而非参数本身。</text>
-<text x="678" y="272" fill="#fbbf24" font-size="13" font-weight="600" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">同口径复测：−5.2%</text>
+<text x="0" y="22" fill="#5b6673" font-size="12.5">同一份配置，只改测试方法，不改任何数据库参数</text>
+<line x1="70" y1="290.0" x2="630" y2="290.0" stroke="rgba(0,0,0,0.08)"/>
+<text x="60" y="294.0" fill="#5b6673" font-size="11" text-anchor="end" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">0</text>
+<line x1="70" y1="220.7" x2="630" y2="220.7" stroke="rgba(0,0,0,0.08)"/>
+<text x="60" y="224.7" fill="#5b6673" font-size="11" text-anchor="end" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">20,000</text>
+<line x1="70" y1="151.3" x2="630" y2="151.3" stroke="rgba(0,0,0,0.08)"/>
+<text x="60" y="155.3" fill="#5b6673" font-size="11" text-anchor="end" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">40,000</text>
+<line x1="70" y1="82.0" x2="630" y2="82.0" stroke="rgba(0,0,0,0.08)"/>
+<text x="60" y="86.0" fill="#5b6673" font-size="11" text-anchor="end" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">60,000</text>
+<rect x="133.6" y="126.5" width="74" height="163.5" rx="4" fill="#64748b" opacity="0.28"/>
+<text x="170.6" y="117.5" fill="#1f2328" font-size="13" font-weight="700" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">47,153</text>
+<text x="170.6" y="308" fill="#5b6673" font-size="11.5" text-anchor="middle">未还原</text>
+<rect x="223.6" y="111.2" width="74" height="178.8" rx="4" fill="#64748b" opacity="0.92"/>
+<text x="260.6" y="102.2" fill="#1f2328" font-size="13" font-weight="700" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">51,579</text>
+<text x="260.6" y="308" fill="#5b6673" font-size="11.5" text-anchor="middle">已还原</text>
+<text x="215.6" y="330" fill="#1f2328" font-size="13.5" font-weight="600" text-anchor="middle">默认参数</text>
+<text x="215.6" y="77.2" fill="#64748b" font-size="17" font-weight="700" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">+9.4%</text>
+<rect x="391.2" y="166.6" width="74" height="123.4" rx="4" fill="#16a34a" opacity="0.28"/>
+<text x="428.2" y="157.6" fill="#1f2328" font-size="13" font-weight="700" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">35,600</text>
+<text x="428.2" y="308" fill="#5b6673" font-size="11.5" text-anchor="middle">未还原</text>
+<rect x="481.2" y="120.5" width="74" height="169.5" rx="4" fill="#16a34a" opacity="0.92"/>
+<text x="518.2" y="111.5" fill="#1f2328" font-size="13" font-weight="700" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">48,883</text>
+<text x="518.2" y="308" fill="#5b6673" font-size="11.5" text-anchor="middle">已还原</text>
+<text x="473.2" y="330" fill="#1f2328" font-size="13.5" font-weight="600" text-anchor="middle">KAOT 全量</text>
+<text x="473.2" y="86.5" fill="#16a34a" font-size="17" font-weight="700" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">+37.3%</text>
+<line x1="70" y1="290" x2="630" y2="290" stroke="rgba(0,0,0,0.22)"/>
+<rect x="660" y="82" width="220" height="208" rx="10" fill="rgba(22,163,74,0.06)" stroke="rgba(22,163,74,0.28)"/>
+<text x="678" y="112" fill="#16a34a" font-size="13" font-weight="700">KAOT 涨 37.3%</text>
+<text x="678" y="138" fill="#1f2328" font-size="13" font-weight="400">默认只涨 9.4%</text>
+<text x="678" y="164" fill="#1f2328" font-size="13" font-weight="400"></text>
+<text x="678" y="190" fill="#5b6673" font-size="13" font-weight="400">−24.5% 中的绝大部分</text>
+<text x="678" y="216" fill="#5b6673" font-size="13" font-weight="400">来自数据磨损，</text>
+<text x="678" y="242" fill="#5b6673" font-size="13" font-weight="400">而非参数本身。</text>
+<text x="678" y="272" fill="#d97706" font-size="13" font-weight="600" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">同口径复测：−5.2%</text>
 </svg>
