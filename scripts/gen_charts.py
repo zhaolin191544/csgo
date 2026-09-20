@@ -510,21 +510,22 @@ print("done")
 
 
 # ================================================================
-# 项目二：PaddleOCR 昇腾平台性能摸测（实测数据）
+# 项目二：PaddleOCR 昇腾平台性能摸测
+# 数据源：2026-09-12 双机交叉验证版（取代 09-10 初版，初版数据已作废）
 # ================================================================
 
 # ---------------------------------------------------------------- figP1
 def figP1():
-    """单实例耗时构成：固定开销 + rec 随文本行数线性增长"""
+    """单实例：耗时随文本行数线性增长 + 典型页构成"""
     W, H = 880, 320
     s = head(W, H, None,
-             "单页耗时 ≈ 398.6 ms + 12.50 ms × 文本行数　（最小二乘回归，n = 104，R² = 0.681）")
-    x0, y0, pw, ph = 64, 48, 430, 210
-    xmax, ymax = 220, 3200
+             "单页耗时 ≈ 160.7 ms + 3.10 ms × 文本行数　（最小二乘回归，n = 104，R² = 0.501）")
+    x0, y0, pw, ph = 64, 48, 420, 210
+    xmax, ymax = 220, 900
     def px(v): return x0 + pw * v / xmax
     def py(v): return y0 + ph - ph * v / ymax
-    for i in range(5):
-        v = ymax * i / 4
+    for i in range(4):
+        v = ymax * i / 3
         y = py(v)
         s.append(f'<line x1="{x0}" y1="{y:.1f}" x2="{x0+pw}" y2="{y:.1f}" stroke="{GRID}"/>')
         s.append(f'<text x="{x0-9}" y="{y+4:.1f}" fill="{MUTED}" font-size="10.5" text-anchor="end" '
@@ -533,173 +534,204 @@ def figP1():
         s.append(f'<text x="{px(v):.1f}" y="{y0+ph+18}" fill="{MUTED}" font-size="10.5" '
                  f'text-anchor="middle" font-family="{MONO}">{v}</text>')
     s.append(f'<text x="{x0+pw/2:.1f}" y="{y0+ph+38}" fill="{MUTED}" font-size="11.5" '
-             f'text-anchor="middle">每页文本行数</text>')
+             f'text-anchor="middle">每页文本行数（中位 41，max 209）</text>')
     s.append(f'<text x="{x0-52}" y="{y0-6}" fill="{MUTED}" font-size="11.5">单页耗时 ms</text>')
     s.append(f'<line x1="{x0}" y1="{y0+ph}" x2="{x0+pw}" y2="{y0+ph}" stroke="{AXIS}"/>')
     # 固定开销带
-    s.append(f'<rect x="{x0}" y="{py(398.6):.1f}" width="{pw}" height="{y0+ph-py(398.6):.1f}" '
+    s.append(f'<rect x="{x0}" y="{py(160.7):.1f}" width="{pw}" height="{y0+ph-py(160.7):.1f}" '
              f'fill="rgba(100,116,139,0.14)"/>')
-    s.append(f'<line x1="{x0}" y1="{py(398.6):.1f}" x2="{x0+pw}" y2="{py(398.6):.1f}" '
+    s.append(f'<line x1="{x0}" y1="{py(160.7):.1f}" x2="{x0+pw}" y2="{py(160.7):.1f}" '
              f'stroke="{C_A}" stroke-width="1.4" stroke-dasharray="5 4"/>')
-    s.append(f'<text x="{x0+pw-4:.1f}" y="{py(398.6)-7:.1f}" fill="{C_A}" font-size="11" '
-             f'text-anchor="end" font-family="{MONO}">固定开销 399 ms</text>')
-    # 回归线
-    s.append(f'<path d="M{px(13):.1f},{py(398.6+12.5*13):.1f} L{px(209):.1f},{py(398.6+12.5*209):.1f}" '
+    s.append(f'<text x="{x0+pw-4:.1f}" y="{py(160.7)-7:.1f}" fill="{C_A}" font-size="11" '
+             f'text-anchor="end" font-family="{MONO}">固定开销 161 ms</text>')
+    s.append(f'<path d="M{px(13):.1f},{py(160.7+3.10*13):.1f} L{px(209):.1f},{py(160.7+3.10*209):.1f}" '
              f'stroke="{C_B}" stroke-width="2.6"/>')
-    # 关键分位点
     for n, lb in ((13, "min 13"), (41, "中位 41"), (69, "P90 69"), (209, "max 209")):
-        v = 398.6 + 12.5 * n
+        v = 160.7 + 3.10 * n
         s.append(f'<circle cx="{px(n):.1f}" cy="{py(v):.1f}" r="4.2" fill="{PAPER}" stroke="{C_B}" stroke-width="2.2"/>')
         anc = "end" if n == 209 else "start"
         dx = -8 if n == 209 else 8
         s.append(f'<text x="{px(n)+dx:.1f}" y="{py(v)-8:.1f}" fill="{MUTED}" font-size="10.5" '
                  f'text-anchor="{anc}" font-family="{MONO}">{lb}</text>')
-    # 右侧：典型页耗时构成
-    cx0 = 560
-    s.append(f'<text x="{cx0}" y="{y0+8}" fill="{FG}" font-size="13" font-weight="700">典型页（45 行）耗时构成</text>')
-    bw, bx, by = 300, cx0, y0 + 26
-    total = 961.0
-    segs = [("固定开销", 399, 41, C_A), ("rec 推理（随行数增长）", 562, 59, C_B)]
+    # 右侧：典型页构成
+    cx0 = 548
+    s.append(f'<text x="{cx0}" y="{y0+8}" fill="{FG}" font-size="13" font-weight="700">典型页（45 行 ≈ 301 ms）构成</text>')
+    bw, bx, by = 312, cx0, y0 + 26
+    segs = [("固定开销", "PNG 解码 / resize / det / DB 后处理", 161, 54, C_A),
+            ("可变开销", "rec 推理 + 文本框裁剪", 139, 46, C_B)]
     cx = bx
-    for i, (lb, v, pct, c) in enumerate(segs):
-        w = bw * v / total
+    for i, (lb, sub, v, pct, c) in enumerate(segs):
+        w = bw * v / 300.0
         s.append(f'<rect x="{cx:.1f}" y="{by}" width="{w:.1f}" height="44" fill="{c}" opacity="0.9" '
                  f'rx="{5 if i in (0, len(segs)-1) else 0}"/>')
         s.append(f'<text x="{cx+w/2:.1f}" y="{by+29}" fill="{PAPER}" font-size="16" font-weight="800" '
                  f'text-anchor="middle" font-family="{MONO}">{pct}%</text>')
-        s.append(f'<text x="{cx:.1f}" y="{by+62}" fill="{c}" font-size="11.5" font-weight="600">{lb}</text>')
-        s.append(f'<text x="{cx:.1f}" y="{by+79}" fill="{MUTED}" font-size="11" font-family="{MONO}">{v} ms</text>')
+        s.append(f'<text x="{cx:.1f}" y="{by+62}" fill="{c}" font-size="11.5" font-weight="600">'
+                 f'{lb} <tspan fill="{MUTED}" font-weight="400" font-family="{MONO}">{v} ms</tspan></text>')
+        s.append(f'<text x="{cx:.1f}" y="{by+78}" fill="{MUTED}" font-size="10">{sub}</text>')
         cx += w
-    s.append(f'<rect x="{cx0}" y="{by+96}" width="300" height="74" rx="9" fill="rgba(217,119,6,0.07)" '
+    s.append(f'<rect x="{cx0}" y="{by+92}" width="312" height="78" rx="9" fill="rgba(217,119,6,0.07)" '
              f'stroke="rgba(217,119,6,0.3)"/>')
-    for i, t in enumerate(["固定开销 399 ms 中约 300 ms 是 CPU 单线程：",
-                           "PNG 解码 / resize / DB 后处理 / 45 次 crop —",
-                           "这段完全不使用 NPU。"]):
-        s.append(f'<text x="{cx0+14}" y="{by+118+i*19}" fill="{MUTED}" font-size="11.2">{t}</text>')
+    for i, t in enumerate(["R² 仅 0.501 —— 行数只解释一半方差，",
+                           "其余来自文本行宽度（3~2185，跨 60 倍）：",
+                           "同样 45 行，全短标签与全长句的 rec 计算量差别很大。"]):
+        s.append(f'<text x="{cx0+14}" y="{by+114+i*19}" fill="{MUTED}" font-size="10.8">{t}</text>')
     write("figP1_latency.svg", s)
 
 
 # ---------------------------------------------------------------- figP2
 def figP2():
-    """多实例爬坡：拐点与 HBM 饱和重合，AICore 从未饱和"""
-    W, H = 880, 360
+    """双机爬坡 + 资源利用率：瓶颈是 AICore 算力"""
+    W, H = 880, 372
     s = head(W, H, None,
-             "单卡多实例爬坡（ASCEND_OM_OUTPUTSIZE = 1024 组）—— 吞吐拐点与 HBM 饱和位置完全重合")
-    x0, y0, pw, ph = 62, 62, 470, 232
-    xs = [1, 2, 4, 8, 16, 24, 32]
-    qps = [1.21, 2.31, 4.45, 8.31, 15.13, 20.47, 20.02]
-    qmax, pmax = 24.0, 100.0
+             "单卡多实例爬坡 · 两台独立服务器交叉验证 · 资源采样取自服务器 A（1 秒 / 次，整轮均值）")
+    x0, y0, pw, ph = 62, 66, 466, 236
+    xs = [1, 4, 8, 12, 16, 20, 24, 32, 38, 44]
+    qA = {0: 3.40, 1: 13.14, 2: 22.21, 4: 33.37, 6: 38.10, 7: 39.22, 8: 41.83, 9: 41.70}
+    qB = [3.14, 11.97, 21.42, 28.41, 33.67, 36.74, 38.54, 39.42, 41.33, 41.72]
+    ai = {0: 8.8, 1: 39.2, 2: 73.6, 4: 89.7, 6: 90.2, 7: 92.8, 8: 92.8, 9: 86.0}
+    hb = {0: 6.8, 1: 14.0, 2: 23.9, 4: 43.0, 6: 60.9, 7: 82.2, 8: 88.5, 9: 88.4}
+    qmax, pmax = 45.0, 100.0
     def px(i): return x0 + pw * i / (len(xs) - 1)
     def pyq(v): return y0 + ph - ph * v / qmax
     def pyp(v): return y0 + ph - ph * v / pmax
-    for i in range(5):
-        y = y0 + ph - ph * i / 4
+    for i in range(4):
+        y = y0 + ph - ph * i / 3
         s.append(f'<line x1="{x0}" y1="{y:.1f}" x2="{x0+pw}" y2="{y:.1f}" stroke="{GRID}"/>')
         s.append(f'<text x="{x0-9}" y="{y+4:.1f}" fill="{C_B}" font-size="10.5" text-anchor="end" '
-                 f'font-family="{MONO}">{qmax*i/4:.0f}</text>')
+                 f'font-family="{MONO}">{qmax*i/3:.0f}</text>')
         s.append(f'<text x="{x0+pw+9}" y="{y+4:.1f}" fill="{MUTED}" font-size="10.5" '
-                 f'font-family="{MONO}">{pmax*i/4:.0f}%</text>')
+                 f'font-family="{MONO}">{pmax*i/3:.0f}%</text>')
     for i, t in enumerate(xs):
-        s.append(f'<text x="{px(i):.1f}" y="{y0+ph+18}" fill="{FG}" font-size="11.5" '
+        s.append(f'<text x="{px(i):.1f}" y="{y0+ph+18}" fill="{FG}" font-size="11" '
                  f'text-anchor="middle" font-family="{MONO}">{t}</text>')
     s.append(f'<text x="{x0+pw/2:.1f}" y="{y0+ph+38}" fill="{MUTED}" font-size="11.5" '
              f'text-anchor="middle">实例数</text>')
-    s.append(f'<text x="{x0-16}" y="{y0-10}" fill="{C_B}" font-size="11" text-anchor="middle">QPS</text>')
+    s.append(f'<text x="{x0-32}" y="{y0-10}" fill="{C_B}" font-size="11" text-anchor="middle">QPS</text>')
     s.append(f'<line x1="{x0}" y1="{y0+ph}" x2="{x0+pw}" y2="{y0+ph}" stroke="{AXIS}"/>')
-    # HBM / AICore（右轴，仅连实测点）
-    for label, pts, color, dash in (
-            ("HBM %", [(0, 9), (4, 69), (5, 98), (6, 99)], C_BAD, 'stroke-dasharray="6 4"'),
-            ("AICore %", [(0, 2.9), (3, 23), (4, 41.8), (5, 53.6), (6, 52.4)], C_E, 'stroke-dasharray="6 4"')):
-        d = " ".join(f'{"M" if k==0 else "L"}{px(i):.1f},{pyp(v):.1f}' for k, (i, v) in enumerate(pts))
-        s.append(f'<path d="{d}" fill="none" stroke="{color}" stroke-width="2" {dash}/>')
-        for i, v in pts:
-            s.append(f'<circle cx="{px(i):.1f}" cy="{pyp(v):.1f}" r="3.4" fill="{PAPER}" stroke="{color}" stroke-width="1.8"/>')
-    # 聚合 QPS
-    d = " ".join(f'{"M" if i==0 else "L"}{px(i):.1f},{pyq(v):.1f}' for i, v in enumerate(qps))
+    # 16 实例：AICore 饱和起点
+    s.append(f'<rect x="{px(4):.1f}" y="{y0}" width="{px(9)-px(4):.1f}" height="{ph}" fill="rgba(220,38,38,0.05)"/>')
+    s.append(f'<line x1="{px(4):.1f}" y1="{y0}" x2="{px(4):.1f}" y2="{y0+ph}" stroke="{C_BAD}" '
+             f'stroke-width="1.2" stroke-dasharray="4 3" opacity="0.8"/>')
+    s.append(f'<text x="{px(4)+6:.1f}" y="{y0+13}" fill="{C_BAD}" font-size="10.8" font-weight="700">'
+             f'AICore 89.7% —— 此后算力饱和</text>')
+    # 资源线（右轴）
+    for pts, color, name in ((hb, C_C1, "HBM %"), (ai, C_BAD, "AICore %")):
+        ks = sorted(pts)
+        d = " ".join(f'{"M" if k==0 else "L"}{px(i):.1f},{pyp(pts[i]):.1f}' for k, i in enumerate(ks))
+        s.append(f'<path d="{d}" fill="none" stroke="{color}" stroke-width="2" stroke-dasharray="6 4"/>')
+        for i in ks:
+            s.append(f'<circle cx="{px(i):.1f}" cy="{pyp(pts[i]):.1f}" r="3.2" fill="{PAPER}" stroke="{color}" stroke-width="1.8"/>')
+    # 吞吐：A 实线 / B 虚线
+    ks = sorted(qA)
+    d = " ".join(f'{"M" if k==0 else "L"}{px(i):.1f},{pyq(qA[i]):.1f}' for k, i in enumerate(ks))
     s.append(f'<path d="{d}" fill="none" stroke="{C_B}" stroke-width="2.8" stroke-linejoin="round"/>')
-    for i, v in enumerate(qps):
-        s.append(f'<circle cx="{px(i):.1f}" cy="{pyq(v):.1f}" r="4.4" fill="{PAPER}" stroke="{C_B}" stroke-width="2.4"/>')
-    # 拐点
-    kx, ky = px(5), pyq(20.47)
-    s.append(f'<line x1="{kx:.1f}" y1="{y0}" x2="{kx:.1f}" y2="{y0+ph}" stroke="{C_E}" '
-             f'stroke-width="1.2" stroke-dasharray="4 3" opacity="0.7"/>')
-    s.append(f'<circle cx="{kx:.1f}" cy="{ky:.1f}" r="6.5" fill="none" stroke="{C_E}" stroke-width="2.4"/>')
-    s.append(f'<text x="{kx+11:.1f}" y="{ky+26:.1f}" fill="{C_E}" font-size="12" font-weight="700">拐点 24 实例</text>')
-    s.append(f'<text x="{kx+11:.1f}" y="{ky+43:.1f}" fill="{C_E}" font-size="12.5" font-weight="700" '
-             f'font-family="{MONO}">20.47 QPS</text>')
-    s.extend(legend(x0, y0 - 14, [(C_B, "聚合 QPS"), (C_E, "AICore %"), (C_BAD, "HBM %")]))
+    for i in ks:
+        s.append(f'<circle cx="{px(i):.1f}" cy="{pyq(qA[i]):.1f}" r="4.2" fill="{PAPER}" stroke="{C_B}" stroke-width="2.4"/>')
+    d = " ".join(f'{"M" if i==0 else "L"}{px(i):.1f},{pyq(v):.1f}' for i, v in enumerate(qB))
+    s.append(f'<path d="{d}" fill="none" stroke="{C_D}" stroke-width="2.2" stroke-dasharray="7 4"/>')
+    for i, v in enumerate(qB):
+        s.append(f'<circle cx="{px(i):.1f}" cy="{pyq(v):.1f}" r="3.4" fill="{PAPER}" stroke="{C_D}" stroke-width="2"/>')
+    # 推荐运行点 24
+    s.append(f'<text x="{px(6):.1f}" y="{pyq(38.54)+24:.1f}" fill="{C_E}" font-size="15" '
+             f'text-anchor="middle" font-weight="800">★</text>')
+    s.append(f'<text x="{px(6):.1f}" y="{pyq(38.54)+40:.1f}" fill="{C_E}" font-size="10.8" '
+             f'text-anchor="middle" font-weight="700">推荐运行点 24</text>')
+    s.extend(legend(x0, y0 - 14, [(C_B, "服务器 A"), (C_D, "服务器 B"), (C_BAD, "AICore %"), (C_C1, "HBM %")]))
     # 右侧结论
-    cx0 = 596
-    s.append(f'<rect x="{cx0}" y="62" width="284" height="124" rx="10" fill="rgba(220,38,38,0.06)" '
-             f'stroke="rgba(220,38,38,0.28)"/>')
-    s.append(f'<text x="{cx0+16}" y="88" fill="{C_BAD}" font-size="13" font-weight="700">瓶颈是 HBM，不是算力</text>')
-    for i, t in ([(0, "拐点处 AICore 仅 53.6%，从未饱和"),
-                  (1, "同一位置 HBM 已达 98~99%"),
-                  (2, "理论上限 23 vs 实测 24 —— 吻合")]):
-        s.append(f'<text x="{cx0+16}" y="{112+i*21}" fill="{MUTED}" font-size="11.5">{t}</text>')
-    s.append(f'<rect x="{cx0}" y="198" width="284" height="96" rx="10" fill="rgba(22,163,74,0.07)" '
+    cx0 = 592
+    s.append(f'<rect x="{cx0}" y="66" width="288" height="86" rx="10" fill="rgba(22,163,74,0.07)" '
              f'stroke="rgba(22,163,74,0.3)"/>')
-    s.append(f'<text x="{cx0+16}" y="224" fill="{C_B}" font-size="13" font-weight="700">显存优化后（OUT=64）</text>')
-    s.append(f'<text x="{cx0+16}" y="256" fill="{FG}" font-size="26" font-weight="800" '
-             f'font-family="{MONO}">27.96 <tspan font-size="14" fill="{MUTED}">QPS</tspan></text>')
-    s.append(f'<text x="{cx0+16}" y="278" fill="{MUTED}" font-size="11.5">单卡峰值，约 38 实例（另一组实测）</text>')
-    s.append(f'<text x="14" y="{H-12}" fill="{MUTED}" font-size="11">'
-             f'注：两组爬坡的 --limit / --loop / --warmup 不同，绝对 QPS 不跨组比较；此处仅用同组内的趋势与拐点</text>')
+    s.append(f'<text x="{cx0+16}" y="90" fill="{C_B}" font-size="12.5" font-weight="700">两机峰值几乎完全一致</text>')
+    s.append(f'<text x="{cx0+16}" y="120" fill="{FG}" font-size="21" font-weight="800" '
+             f'font-family="{MONO}">41.83 <tspan fill="{MUTED}" font-size="14">vs</tspan> 41.72</text>')
+    s.append(f'<text x="{cx0+16}" y="140" fill="{MUTED}" font-size="11">单实例差 7.6%，峰值仅差 '
+             f'<tspan fill="{C_B}" font-weight="700">0.3%</tspan> —— 可跨机复现</text>')
+    s.append(f'<rect x="{cx0}" y="164" width="288" height="138" rx="10" fill="rgba(220,38,38,0.06)" '
+             f'stroke="rgba(220,38,38,0.28)"/>')
+    s.append(f'<text x="{cx0+16}" y="188" fill="{C_BAD}" font-size="12.5" font-weight="700">瓶颈 = AICore 算力</text>')
+    rules = [("AICore", "16 实例即 89.7%，p50 已 100%", "✅ 瓶颈", C_BAD),
+             ("HBM", "38 实例才 88.5%", "❌ 仅限实例上限", MUTED),
+             ("CPU", "峰值 24 核 / 256 核", "❌ 完全空闲", MUTED)]
+    for i, (a_, b_, c_, col) in enumerate(rules):
+        y = 212 + i * 30
+        s.append(f'<text x="{cx0+16}" y="{y}" fill="{col}" font-size="11.5" font-weight="700" font-family="{MONO}">{a_}</text>')
+        s.append(f'<text x="{cx0+272}" y="{y}" fill="{col}" font-size="11" text-anchor="end">{c_}</text>')
+        s.append(f'<text x="{cx0+16}" y="{y+14}" fill="{MUTED}" font-size="10.5">{b_}</text>')
+    s.append(f'<text x="14" y="{H-10}" fill="{MUTED}" font-size="11">'
+             f'16 → 38 实例（+137%）吞吐仅涨 24%：多出来的实例大部分时间在排队等 NPU</text>')
     write("figP2_ramp.svg", s)
 
 
 # ---------------------------------------------------------------- figP3
 def figP3():
-    """显存优化：只改一个环境变量"""
-    W, H = 880, 300
+    """吞吐-时延权衡与推荐运行点"""
+    W, H = 880, 320
     s = head(W, H, None,
-             "ASCEND_OM_OUTPUTSIZE 1024 → 64 MB：只改一个环境变量，不改模型、不影响精度")
-    x0, y0, pw, ph = 64, 52, 330, 176
-    rows = [(1024, 2686, 1.211), (256, 1918, 1.211), (64, 1726, 1.208)]
-    vmax = 3000
+             "吞吐与 P99 时延的权衡 —— 24 实例取到 92% 峰值吞吐，P99 仅 1.5 s（服务器 B）")
+    x0, y0, pw, ph = 62, 52, 404, 196
+    xs = [8, 16, 20, 24, 32, 38, 44]
+    qps = [21.42, 33.67, 36.74, 38.54, 39.42, 41.33, 41.72]
+    p99 = [768, 1059, 1424, 1497, 1915, 2247, 2949]
+    qmax, lmax = 45.0, 3200.0
+    step = pw / len(xs)
+    def cx(i): return x0 + step * (i + 0.5)
+    def pyq(v): return y0 + ph - ph * v / qmax
+    def pyl(v): return y0 + ph - ph * v / lmax
     for i in range(4):
-        v = vmax * i / 3
         y = y0 + ph - ph * i / 3
         s.append(f'<line x1="{x0}" y1="{y:.1f}" x2="{x0+pw}" y2="{y:.1f}" stroke="{GRID}"/>')
-        s.append(f'<text x="{x0-9}" y="{y+4:.1f}" fill="{MUTED}" font-size="10.5" text-anchor="end" '
-                 f'font-family="{MONO}">{fmt(v)}</text>')
-    step = pw / 3
-    for i, (out, hbm, q) in enumerate(rows):
-        cx = x0 + step * (i + 0.5)
-        bh = ph * hbm / vmax
+        s.append(f'<text x="{x0-9}" y="{y+4:.1f}" fill="{C_B}" font-size="10.5" text-anchor="end" '
+                 f'font-family="{MONO}">{qmax*i/3:.0f}</text>')
+        s.append(f'<text x="{x0+pw+9}" y="{y+4:.1f}" fill="{C_E}" font-size="10.5" '
+                 f'font-family="{MONO}">{lmax*i/3/1000:.1f}s</text>')
+    bw = step * 0.56
+    for i, (n, q) in enumerate(zip(xs, qps)):
+        bh = ph * q / qmax
         y = y0 + ph - bh
-        c = C_C1 if out == 64 else C_A
-        s.append(f'<rect x="{cx-38:.1f}" y="{y:.1f}" width="76" height="{bh:.1f}" rx="4" fill="{c}" opacity="0.88"/>')
-        s.append(f'<text x="{cx:.1f}" y="{y-8:.1f}" fill="{FG}" font-size="13" font-weight="700" '
-                 f'text-anchor="middle" font-family="{MONO}">{fmt(hbm)}</text>')
-        s.append(f'<text x="{cx:.1f}" y="{y0+ph+19}" fill="{FG}" font-size="12" text-anchor="middle" '
-                 f'font-family="{MONO}">{out} MB</text>')
-        s.append(f'<text x="{cx:.1f}" y="{y0+ph+37}" fill="{MUTED}" font-size="10.8" text-anchor="middle" '
-                 f'font-family="{MONO}">QPS {q}</text>')
+        c = C_E if n == 24 else C_B
+        s.append(f'<rect x="{cx(i)-bw/2:.1f}" y="{y:.1f}" width="{bw:.1f}" height="{bh:.1f}" rx="3.5" '
+                 f'fill="{c}" opacity="{0.95 if n==24 else 0.75}"/>')
+        s.append(f'<text x="{cx(i):.1f}" y="{y-7:.1f}" fill="{FG}" font-size="11" font-weight="700" '
+                 f'text-anchor="middle" font-family="{MONO}">{q}</text>')
+        w = "800" if n == 24 else "400"
+        col = C_E if n == 24 else FG
+        s.append(f'<text x="{cx(i):.1f}" y="{y0+ph+19}" fill="{col}" font-size="11.5" text-anchor="middle" '
+                 f'font-weight="{w}" font-family="{MONO}">{n}</text>')
+    s.append(f'<text x="{cx(3):.1f}" y="{y0+ph+36}" fill="{C_E}" font-size="10.8" text-anchor="middle" '
+             f'font-weight="700">★ 推荐</text>')
     s.append(f'<line x1="{x0}" y1="{y0+ph}" x2="{x0+pw}" y2="{y0+ph}" stroke="{AXIS}"/>')
-    s.append(f'<text x="{x0-52}" y="{y0-8}" fill="{MUTED}" font-size="11.5">单实例 HBM / MB</text>')
-    s.append(f'<text x="{x0+pw/2:.1f}" y="{y0+ph+58}" fill="{MUTED}" font-size="11" text-anchor="middle">'
-             f'差值精确等于配置差 ⇒ 固定基础占用 ≈ 1662 MB；三档 QPS 一致（噪声内）</text>')
-    # 右侧两个增益
-    cx0 = 452
-    cards = [("单卡实例上限", "24", "~38", "+58%", C_C1, 52),
-             ("单卡峰值吞吐", "20.47", "27.96", "+36.6%", C_B, 158)]
-    for title, a_, b_, delta, color, y in cards:
-        s.append(f'<rect x="{cx0}" y="{y}" width="428" height="92" rx="10" '
-                 f'fill="rgba(0,0,0,0.028)" stroke="rgba(0,0,0,0.10)"/>')
-        s.append(f'<text x="{cx0+18}" y="{y+24}" fill="{MUTED}" font-size="12">{title}</text>')
-        s.append(f'<text x="{cx0+18}" y="{y+66}" fill="{C_A}" font-size="27" font-weight="700" '
-                 f'font-family="{MONO}">{a_}</text>')
-        s.append(f'<text x="{cx0+150}" y="{y+62}" fill="{MUTED}" font-size="22">→</text>')
-        s.append(f'<text x="{cx0+196}" y="{y+66}" fill="{color}" font-size="30" font-weight="800" '
-                 f'font-family="{MONO}">{b_}</text>')
-        s.append(f'<text x="{cx0+410}" y="{y+66}" fill="{color}" font-size="23" font-weight="800" '
-                 f'text-anchor="end" font-family="{MONO}">{delta}</text>')
-    s.append(f'<text x="{cx0}" y="{H-14}" fill="{MUTED}" font-size="11">'
-             f'精度与单实例性能均无损失，全量回归 104/104 通过 —— 本次投入产出比最高的一项优化</text>')
-    write("figP3_memory.svg", s)
+    d = " ".join(f'{"M" if i==0 else "L"}{cx(i):.1f},{pyl(v):.1f}' for i, v in enumerate(p99))
+    s.append(f'<path d="{d}" fill="none" stroke="{C_BAD}" stroke-width="2.2" stroke-dasharray="6 4"/>')
+    for i, v in enumerate(p99):
+        s.append(f'<circle cx="{cx(i):.1f}" cy="{pyl(v):.1f}" r="3.4" fill="{PAPER}" stroke="{C_BAD}" stroke-width="2"/>')
+    s.append(f'<text x="{x0-14}" y="{y0-10}" fill="{C_B}" font-size="11" text-anchor="middle">QPS</text>')
+    s.append(f'<text x="{x0+pw+16}" y="{y0-10}" fill="{C_BAD}" font-size="11">P99</text>')
+    s.append(f'<text x="{x0}" y="{y0+ph+36}" fill="{MUTED}" font-size="11">实例数</text>')
+    # 右侧
+    cx0 = 512
+    s.append(f'<rect x="{cx0}" y="52" width="368" height="74" rx="10" fill="rgba(217,119,6,0.07)" '
+             f'stroke="rgba(217,119,6,0.32)"/>')
+    s.append(f'<text x="{cx0+16}" y="76" fill="{C_E}" font-size="12.5" font-weight="700">24 → 44 实例：不值得</text>')
+    s.append(f'<text x="{cx0+16}" y="100" fill="{FG}" font-size="12.5">吞吐仅 '
+             f'<tspan fill="{C_B}" font-weight="700" font-family="{MONO}">+8.3%</tspan>，'
+             f'而 P99 从 1.5 s 涨到 2.9 s（<tspan fill="{C_BAD}" font-weight="700" font-family="{MONO}">+97%</tspan>）</text>')
+    s.append(f'<text x="{cx0+16}" y="118" fill="{MUTED}" font-size="11">'
+             f'边际收益在 20 实例后跌破 0.5 QPS/实例，24 后基本枯竭</text>')
+    s.append(f'<text x="{cx0}" y="{152}" fill="{FG}" font-size="12.5" font-weight="700">容量估算（按 38.5 QPS / 卡）</text>')
+    for i, (t, n) in enumerate([("100 QPS", "3 卡"), ("500 QPS", "13 卡"), ("1000 QPS", "26 卡")]):
+        x = cx0 + i * 124
+        s.append(f'<rect x="{x}" y="164" width="112" height="60" rx="9" fill="rgba(0,0,0,0.028)" '
+                 f'stroke="rgba(0,0,0,0.10)"/>')
+        s.append(f'<text x="{x+56}" y="186" fill="{MUTED}" font-size="11" text-anchor="middle" '
+                 f'font-family="{MONO}">{t}</text>')
+        s.append(f'<text x="{x+56}" y="212" fill="{C_C1}" font-size="19" font-weight="800" '
+                 f'text-anchor="middle" font-family="{MONO}">{n}</text>')
+    s.append(f'<text x="{cx0}" y="244" fill="{MUTED}" font-size="10.8">'
+             f'线性外推，未实测整机多卡；实际部署建议预留 10~20% 余量</text>')
+    write("figP3_tradeoff.svg", s)
 
 
 for fn in (figP1, figP2, figP3):
     fn()
-print("project-2 charts (measured) done")
+print("project-2 charts (final 09-12 data) done")

@@ -1,68 +1,96 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 360" width="880" height="360" font-family="'Noto Sans SC','PingFang SC','Microsoft YaHei','Helvetica Neue',Helvetica,Arial,sans-serif">
-<rect width="880" height="360" fill="none"/>
-<text x="0" y="22" fill="#5b6673" font-size="12.5">单卡多实例爬坡（ASCEND_OM_OUTPUTSIZE = 1024 组）—— 吞吐拐点与 HBM 饱和位置完全重合</text>
-<line x1="62" y1="294.0" x2="532" y2="294.0" stroke="rgba(0,0,0,0.08)"/>
-<text x="53" y="298.0" fill="#16a34a" font-size="10.5" text-anchor="end" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">0</text>
-<text x="541" y="298.0" fill="#5b6673" font-size="10.5" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">0%</text>
-<line x1="62" y1="236.0" x2="532" y2="236.0" stroke="rgba(0,0,0,0.08)"/>
-<text x="53" y="240.0" fill="#16a34a" font-size="10.5" text-anchor="end" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">6</text>
-<text x="541" y="240.0" fill="#5b6673" font-size="10.5" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">25%</text>
-<line x1="62" y1="178.0" x2="532" y2="178.0" stroke="rgba(0,0,0,0.08)"/>
-<text x="53" y="182.0" fill="#16a34a" font-size="10.5" text-anchor="end" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">12</text>
-<text x="541" y="182.0" fill="#5b6673" font-size="10.5" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">50%</text>
-<line x1="62" y1="120.0" x2="532" y2="120.0" stroke="rgba(0,0,0,0.08)"/>
-<text x="53" y="124.0" fill="#16a34a" font-size="10.5" text-anchor="end" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">18</text>
-<text x="541" y="124.0" fill="#5b6673" font-size="10.5" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">75%</text>
-<line x1="62" y1="62.0" x2="532" y2="62.0" stroke="rgba(0,0,0,0.08)"/>
-<text x="53" y="66.0" fill="#16a34a" font-size="10.5" text-anchor="end" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">24</text>
-<text x="541" y="66.0" fill="#5b6673" font-size="10.5" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">100%</text>
-<text x="62.0" y="312" fill="#1f2328" font-size="11.5" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">1</text>
-<text x="140.3" y="312" fill="#1f2328" font-size="11.5" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">2</text>
-<text x="218.7" y="312" fill="#1f2328" font-size="11.5" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">4</text>
-<text x="297.0" y="312" fill="#1f2328" font-size="11.5" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">8</text>
-<text x="375.3" y="312" fill="#1f2328" font-size="11.5" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">16</text>
-<text x="453.7" y="312" fill="#1f2328" font-size="11.5" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">24</text>
-<text x="532.0" y="312" fill="#1f2328" font-size="11.5" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">32</text>
-<text x="297.0" y="332" fill="#5b6673" font-size="11.5" text-anchor="middle">实例数</text>
-<text x="46" y="52" fill="#16a34a" font-size="11" text-anchor="middle">QPS</text>
-<line x1="62" y1="294" x2="532" y2="294" stroke="rgba(0,0,0,0.22)"/>
-<path d="M62.0,273.1 L375.3,133.9 L453.7,66.6 L532.0,64.3" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 4"/>
-<circle cx="62.0" cy="273.1" r="3.4" fill="#ffffff" stroke="#dc2626" stroke-width="1.8"/>
-<circle cx="375.3" cy="133.9" r="3.4" fill="#ffffff" stroke="#dc2626" stroke-width="1.8"/>
-<circle cx="453.7" cy="66.6" r="3.4" fill="#ffffff" stroke="#dc2626" stroke-width="1.8"/>
-<circle cx="532.0" cy="64.3" r="3.4" fill="#ffffff" stroke="#dc2626" stroke-width="1.8"/>
-<path d="M62.0,287.3 L297.0,240.6 L375.3,197.0 L453.7,169.6 L532.0,172.4" fill="none" stroke="#d97706" stroke-width="2" stroke-dasharray="6 4"/>
-<circle cx="62.0" cy="287.3" r="3.4" fill="#ffffff" stroke="#d97706" stroke-width="1.8"/>
-<circle cx="297.0" cy="240.6" r="3.4" fill="#ffffff" stroke="#d97706" stroke-width="1.8"/>
-<circle cx="375.3" cy="197.0" r="3.4" fill="#ffffff" stroke="#d97706" stroke-width="1.8"/>
-<circle cx="453.7" cy="169.6" r="3.4" fill="#ffffff" stroke="#d97706" stroke-width="1.8"/>
-<circle cx="532.0" cy="172.4" r="3.4" fill="#ffffff" stroke="#d97706" stroke-width="1.8"/>
-<path d="M62.0,282.3 L140.3,271.7 L218.7,251.0 L297.0,213.7 L375.3,147.7 L453.7,96.1 L532.0,100.5" fill="none" stroke="#16a34a" stroke-width="2.8" stroke-linejoin="round"/>
-<circle cx="62.0" cy="282.3" r="4.4" fill="#ffffff" stroke="#16a34a" stroke-width="2.4"/>
-<circle cx="140.3" cy="271.7" r="4.4" fill="#ffffff" stroke="#16a34a" stroke-width="2.4"/>
-<circle cx="218.7" cy="251.0" r="4.4" fill="#ffffff" stroke="#16a34a" stroke-width="2.4"/>
-<circle cx="297.0" cy="213.7" r="4.4" fill="#ffffff" stroke="#16a34a" stroke-width="2.4"/>
-<circle cx="375.3" cy="147.7" r="4.4" fill="#ffffff" stroke="#16a34a" stroke-width="2.4"/>
-<circle cx="453.7" cy="96.1" r="4.4" fill="#ffffff" stroke="#16a34a" stroke-width="2.4"/>
-<circle cx="532.0" cy="100.5" r="4.4" fill="#ffffff" stroke="#16a34a" stroke-width="2.4"/>
-<line x1="453.7" y1="62" x2="453.7" y2="294" stroke="#d97706" stroke-width="1.2" stroke-dasharray="4 3" opacity="0.7"/>
-<circle cx="453.7" cy="96.1" r="6.5" fill="none" stroke="#d97706" stroke-width="2.4"/>
-<text x="464.7" y="122.1" fill="#d97706" font-size="12" font-weight="700">拐点 24 实例</text>
-<text x="464.7" y="139.1" fill="#d97706" font-size="12.5" font-weight="700" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">20.47 QPS</text>
-<rect x="62" y="40" width="11" height="11" rx="2.5" fill="#16a34a"/>
-<text x="79" y="49" fill="#5b6673" font-size="12">聚合 QPS</text>
-<rect x="173.39999999999998" y="40" width="11" height="11" rx="2.5" fill="#d97706"/>
-<text x="190.39999999999998" y="49" fill="#5b6673" font-size="12">AICore %</text>
-<rect x="269.2" y="40" width="11" height="11" rx="2.5" fill="#dc2626"/>
-<text x="286.2" y="49" fill="#5b6673" font-size="12">HBM %</text>
-<rect x="596" y="62" width="284" height="124" rx="10" fill="rgba(220,38,38,0.06)" stroke="rgba(220,38,38,0.28)"/>
-<text x="612" y="88" fill="#dc2626" font-size="13" font-weight="700">瓶颈是 HBM，不是算力</text>
-<text x="612" y="112" fill="#5b6673" font-size="11.5">拐点处 AICore 仅 53.6%，从未饱和</text>
-<text x="612" y="133" fill="#5b6673" font-size="11.5">同一位置 HBM 已达 98~99%</text>
-<text x="612" y="154" fill="#5b6673" font-size="11.5">理论上限 23 vs 实测 24 —— 吻合</text>
-<rect x="596" y="198" width="284" height="96" rx="10" fill="rgba(22,163,74,0.07)" stroke="rgba(22,163,74,0.3)"/>
-<text x="612" y="224" fill="#16a34a" font-size="13" font-weight="700">显存优化后（OUT=64）</text>
-<text x="612" y="256" fill="#1f2328" font-size="26" font-weight="800" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">27.96 <tspan font-size="14" fill="#5b6673">QPS</tspan></text>
-<text x="612" y="278" fill="#5b6673" font-size="11.5">单卡峰值，约 38 实例（另一组实测）</text>
-<text x="14" y="348" fill="#5b6673" font-size="11">注：两组爬坡的 --limit / --loop / --warmup 不同，绝对 QPS 不跨组比较；此处仅用同组内的趋势与拐点</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 372" width="880" height="372" font-family="'Noto Sans SC','PingFang SC','Microsoft YaHei','Helvetica Neue',Helvetica,Arial,sans-serif">
+<rect width="880" height="372" fill="none"/>
+<text x="0" y="22" fill="#5b6673" font-size="12.5">单卡多实例爬坡 · 两台独立服务器交叉验证 · 资源采样取自服务器 A（1 秒 / 次，整轮均值）</text>
+<line x1="62" y1="302.0" x2="528" y2="302.0" stroke="rgba(0,0,0,0.08)"/>
+<text x="53" y="306.0" fill="#16a34a" font-size="10.5" text-anchor="end" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">0</text>
+<text x="537" y="306.0" fill="#5b6673" font-size="10.5" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">0%</text>
+<line x1="62" y1="223.3" x2="528" y2="223.3" stroke="rgba(0,0,0,0.08)"/>
+<text x="53" y="227.3" fill="#16a34a" font-size="10.5" text-anchor="end" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">15</text>
+<text x="537" y="227.3" fill="#5b6673" font-size="10.5" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">33%</text>
+<line x1="62" y1="144.7" x2="528" y2="144.7" stroke="rgba(0,0,0,0.08)"/>
+<text x="53" y="148.7" fill="#16a34a" font-size="10.5" text-anchor="end" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">30</text>
+<text x="537" y="148.7" fill="#5b6673" font-size="10.5" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">67%</text>
+<line x1="62" y1="66.0" x2="528" y2="66.0" stroke="rgba(0,0,0,0.08)"/>
+<text x="53" y="70.0" fill="#16a34a" font-size="10.5" text-anchor="end" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">45</text>
+<text x="537" y="70.0" fill="#5b6673" font-size="10.5" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">100%</text>
+<text x="62.0" y="320" fill="#1f2328" font-size="11" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">1</text>
+<text x="113.8" y="320" fill="#1f2328" font-size="11" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">4</text>
+<text x="165.6" y="320" fill="#1f2328" font-size="11" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">8</text>
+<text x="217.3" y="320" fill="#1f2328" font-size="11" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">12</text>
+<text x="269.1" y="320" fill="#1f2328" font-size="11" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">16</text>
+<text x="320.9" y="320" fill="#1f2328" font-size="11" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">20</text>
+<text x="372.7" y="320" fill="#1f2328" font-size="11" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">24</text>
+<text x="424.4" y="320" fill="#1f2328" font-size="11" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">32</text>
+<text x="476.2" y="320" fill="#1f2328" font-size="11" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">38</text>
+<text x="528.0" y="320" fill="#1f2328" font-size="11" text-anchor="middle" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">44</text>
+<text x="295.0" y="340" fill="#5b6673" font-size="11.5" text-anchor="middle">实例数</text>
+<text x="30" y="56" fill="#16a34a" font-size="11" text-anchor="middle">QPS</text>
+<line x1="62" y1="302" x2="528" y2="302" stroke="rgba(0,0,0,0.22)"/>
+<rect x="269.1" y="66" width="258.9" height="236" fill="rgba(220,38,38,0.05)"/>
+<line x1="269.1" y1="66" x2="269.1" y2="302" stroke="#dc2626" stroke-width="1.2" stroke-dasharray="4 3" opacity="0.8"/>
+<text x="275.1" y="79" fill="#dc2626" font-size="10.8" font-weight="700">AICore 89.7% —— 此后算力饱和</text>
+<path d="M62.0,286.0 L113.8,269.0 L165.6,245.6 L269.1,200.5 L372.7,158.3 L424.4,108.0 L476.2,93.1 L528.0,93.4" fill="none" stroke="#0284c7" stroke-width="2" stroke-dasharray="6 4"/>
+<circle cx="62.0" cy="286.0" r="3.2" fill="#ffffff" stroke="#0284c7" stroke-width="1.8"/>
+<circle cx="113.8" cy="269.0" r="3.2" fill="#ffffff" stroke="#0284c7" stroke-width="1.8"/>
+<circle cx="165.6" cy="245.6" r="3.2" fill="#ffffff" stroke="#0284c7" stroke-width="1.8"/>
+<circle cx="269.1" cy="200.5" r="3.2" fill="#ffffff" stroke="#0284c7" stroke-width="1.8"/>
+<circle cx="372.7" cy="158.3" r="3.2" fill="#ffffff" stroke="#0284c7" stroke-width="1.8"/>
+<circle cx="424.4" cy="108.0" r="3.2" fill="#ffffff" stroke="#0284c7" stroke-width="1.8"/>
+<circle cx="476.2" cy="93.1" r="3.2" fill="#ffffff" stroke="#0284c7" stroke-width="1.8"/>
+<circle cx="528.0" cy="93.4" r="3.2" fill="#ffffff" stroke="#0284c7" stroke-width="1.8"/>
+<path d="M62.0,281.2 L113.8,209.5 L165.6,128.3 L269.1,90.3 L372.7,89.1 L424.4,83.0 L476.2,83.0 L528.0,99.0" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 4"/>
+<circle cx="62.0" cy="281.2" r="3.2" fill="#ffffff" stroke="#dc2626" stroke-width="1.8"/>
+<circle cx="113.8" cy="209.5" r="3.2" fill="#ffffff" stroke="#dc2626" stroke-width="1.8"/>
+<circle cx="165.6" cy="128.3" r="3.2" fill="#ffffff" stroke="#dc2626" stroke-width="1.8"/>
+<circle cx="269.1" cy="90.3" r="3.2" fill="#ffffff" stroke="#dc2626" stroke-width="1.8"/>
+<circle cx="372.7" cy="89.1" r="3.2" fill="#ffffff" stroke="#dc2626" stroke-width="1.8"/>
+<circle cx="424.4" cy="83.0" r="3.2" fill="#ffffff" stroke="#dc2626" stroke-width="1.8"/>
+<circle cx="476.2" cy="83.0" r="3.2" fill="#ffffff" stroke="#dc2626" stroke-width="1.8"/>
+<circle cx="528.0" cy="99.0" r="3.2" fill="#ffffff" stroke="#dc2626" stroke-width="1.8"/>
+<path d="M62.0,284.2 L113.8,233.1 L165.6,185.5 L269.1,127.0 L372.7,102.2 L424.4,96.3 L476.2,82.6 L528.0,83.3" fill="none" stroke="#16a34a" stroke-width="2.8" stroke-linejoin="round"/>
+<circle cx="62.0" cy="284.2" r="4.2" fill="#ffffff" stroke="#16a34a" stroke-width="2.4"/>
+<circle cx="113.8" cy="233.1" r="4.2" fill="#ffffff" stroke="#16a34a" stroke-width="2.4"/>
+<circle cx="165.6" cy="185.5" r="4.2" fill="#ffffff" stroke="#16a34a" stroke-width="2.4"/>
+<circle cx="269.1" cy="127.0" r="4.2" fill="#ffffff" stroke="#16a34a" stroke-width="2.4"/>
+<circle cx="372.7" cy="102.2" r="4.2" fill="#ffffff" stroke="#16a34a" stroke-width="2.4"/>
+<circle cx="424.4" cy="96.3" r="4.2" fill="#ffffff" stroke="#16a34a" stroke-width="2.4"/>
+<circle cx="476.2" cy="82.6" r="4.2" fill="#ffffff" stroke="#16a34a" stroke-width="2.4"/>
+<circle cx="528.0" cy="83.3" r="4.2" fill="#ffffff" stroke="#16a34a" stroke-width="2.4"/>
+<path d="M62.0,285.5 L113.8,239.2 L165.6,189.7 L217.3,153.0 L269.1,125.4 L320.9,109.3 L372.7,99.9 L424.4,95.3 L476.2,85.2 L528.0,83.2" fill="none" stroke="#7c3aed" stroke-width="2.2" stroke-dasharray="7 4"/>
+<circle cx="62.0" cy="285.5" r="3.4" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="113.8" cy="239.2" r="3.4" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="165.6" cy="189.7" r="3.4" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="217.3" cy="153.0" r="3.4" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="269.1" cy="125.4" r="3.4" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="320.9" cy="109.3" r="3.4" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="372.7" cy="99.9" r="3.4" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="424.4" cy="95.3" r="3.4" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="476.2" cy="85.2" r="3.4" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="528.0" cy="83.2" r="3.4" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+<text x="372.7" y="123.9" fill="#d97706" font-size="15" text-anchor="middle" font-weight="800">★</text>
+<text x="372.7" y="139.9" fill="#d97706" font-size="10.8" text-anchor="middle" font-weight="700">推荐运行点 24</text>
+<rect x="62" y="44" width="11" height="11" rx="2.5" fill="#16a34a"/>
+<text x="79" y="53" fill="#5b6673" font-size="12">服务器 A</text>
+<rect x="162.0" y="44" width="11" height="11" rx="2.5" fill="#7c3aed"/>
+<text x="179.0" y="53" fill="#5b6673" font-size="12">服务器 B</text>
+<rect x="262.0" y="44" width="11" height="11" rx="2.5" fill="#dc2626"/>
+<text x="279.0" y="53" fill="#5b6673" font-size="12">AICore %</text>
+<rect x="357.8" y="44" width="11" height="11" rx="2.5" fill="#0284c7"/>
+<text x="374.8" y="53" fill="#5b6673" font-size="12">HBM %</text>
+<rect x="592" y="66" width="288" height="86" rx="10" fill="rgba(22,163,74,0.07)" stroke="rgba(22,163,74,0.3)"/>
+<text x="608" y="90" fill="#16a34a" font-size="12.5" font-weight="700">两机峰值几乎完全一致</text>
+<text x="608" y="120" fill="#1f2328" font-size="21" font-weight="800" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">41.83 <tspan fill="#5b6673" font-size="14">vs</tspan> 41.72</text>
+<text x="608" y="140" fill="#5b6673" font-size="11">单实例差 7.6%，峰值仅差 <tspan fill="#16a34a" font-weight="700">0.3%</tspan> —— 可跨机复现</text>
+<rect x="592" y="164" width="288" height="138" rx="10" fill="rgba(220,38,38,0.06)" stroke="rgba(220,38,38,0.28)"/>
+<text x="608" y="188" fill="#dc2626" font-size="12.5" font-weight="700">瓶颈 = AICore 算力</text>
+<text x="608" y="212" fill="#dc2626" font-size="11.5" font-weight="700" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">AICore</text>
+<text x="864" y="212" fill="#dc2626" font-size="11" text-anchor="end">✅ 瓶颈</text>
+<text x="608" y="226" fill="#5b6673" font-size="10.5">16 实例即 89.7%，p50 已 100%</text>
+<text x="608" y="242" fill="#5b6673" font-size="11.5" font-weight="700" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">HBM</text>
+<text x="864" y="242" fill="#5b6673" font-size="11" text-anchor="end">❌ 仅限实例上限</text>
+<text x="608" y="256" fill="#5b6673" font-size="10.5">38 实例才 88.5%</text>
+<text x="608" y="272" fill="#5b6673" font-size="11.5" font-weight="700" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">CPU</text>
+<text x="864" y="272" fill="#5b6673" font-size="11" text-anchor="end">❌ 完全空闲</text>
+<text x="608" y="286" fill="#5b6673" font-size="10.5">峰值 24 核 / 256 核</text>
+<text x="14" y="362" fill="#5b6673" font-size="11">16 → 38 实例（+137%）吞吐仅涨 24%：多出来的实例大部分时间在排队等 NPU</text>
 </svg>
