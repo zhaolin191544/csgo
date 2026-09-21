@@ -1,8 +1,8 @@
 <template>
   <div v-if="!hidden" :key="currentPage" ref="containerRef" :class="['w-full h-full relative pointer-events-none z-[3] overflow-hidden', className]" />
-  <div class="global-top">
+  <!-- <div class="global-top">
     <Timer />
-  </div>
+  </div> -->
 </template>
 
 <script setup lang="ts">
@@ -570,4 +570,3 @@ onUnmounted((): void => {
   window.removeEventListener('mousemove', handleMouseMove);
 });
 </script>
-

@@ -380,13 +380,13 @@ CPU 侧还有一个佐证：每实例的 CPU 占用随并发从 1.6 核降到 0.
 <img src="/charts/figP3_tradeoff.svg" class="w-[560px]">
 </div>
 
-<div class="grid grid-cols-2 gap-6 mt-1 text-xs">
+<div class="grid grid-cols-2 gap-6 text-xs">
 
 <div class="text-[10.5px] leading-snug">
 
 <v-click>
 
-<div class="p-2.5 rounded bg-red-600/8 border border-red-600/30">
+<div class="p-2.5 rounded bg-red-600/8 border border-red-600/30 ">
 
 **① `onnxsim` 会破坏动态 shape 模型**　昇腾社区《PaddleOCR优化参考实践》3.4 节建议对 rec 执行 `onnxsim`，实测导致约 **35%（36/104）** 图片推理失败。开 `ASCEND_GLOBAL_LOG_LEVEL=1` 查 plog 才定位：常量折叠把某 reshape 输出固化为 `[40,40,120]`，与 `[1600,1,120]` 无法广播。**已列为上游反馈项。**
 
